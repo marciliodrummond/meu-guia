@@ -64,20 +64,23 @@ a{color:var(--fg-accent);text-decoration:underline;text-decoration-style:dotted;
 .chip:hover{border-color:var(--border-accent)}.chip .dot{width:6px;height:6px;border-radius:50%}
 
 /* ═══ TOPBAR ═══ */
-.topbar{position:sticky;top:0;z-index:300;height:52px;display:flex;align-items:center;padding:0 20px;background:rgba(3,4,9,0.7);backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);border-bottom:1px solid var(--border-line);gap:0}
-.topbar-brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg-primary);flex-shrink:0}
+.topbar{position:sticky;top:0;z-index:300;height:48px;display:flex;align-items:stretch;padding:0 20px;background:rgba(3,4,9,0.7);backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);border-bottom:1px solid var(--border-line);gap:0}
+.topbar-brand{display:flex;align-items:center;gap:8px;align-self:center;text-decoration:none;color:var(--fg-primary);flex-shrink:0}
 .topbar-mark{width:26px;height:26px;border-radius:6px;background:linear-gradient(135deg,var(--gold-400),var(--gold-600));display:flex;align-items:center;justify-content:center;box-shadow:var(--gold-glow-sm);color:var(--black)}
 .topbar-name{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:-0.02em}
 .topbar-tag{font-family:var(--font-mono);font-size:9px;font-weight:600;color:var(--fg-muted);margin-left:-2px}
-.topbar-nav{display:flex;align-items:center;gap:0;margin-left:auto}
-.main-tab{display:flex;align-items:center;gap:5px;padding:14px 14px;font-size:11px;font-weight:600;font-family:var(--font-body);color:var(--fg-muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s var(--ease);white-space:nowrap;letter-spacing:0}
-.main-tab svg{opacity:.5;transition:opacity .2s var(--ease);flex-shrink:0}
-.main-tab:hover{color:var(--fg-secondary)}.main-tab:hover svg{opacity:.7}
+.topbar-nav{display:flex;align-items:stretch;gap:0;margin-left:auto;height:100%}
+.main-tab{display:flex;align-items:center;gap:6px;padding:0 16px;height:100%;font-size:12px;font-weight:600;font-family:var(--font-body);color:var(--fg-muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s var(--ease);white-space:nowrap;letter-spacing:0;position:relative}
+.main-tab svg{opacity:.4;transition:opacity .2s var(--ease);flex-shrink:0;pointer-events:none}
+.main-tab span{pointer-events:none}
+.main-tab::after{content:attr(data-label);position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:9px;font-weight:600;color:var(--fg-accent);background:var(--bg-raised);border:1px solid var(--border-accent);padding:2px 8px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s var(--ease);z-index:10;letter-spacing:.02em}
+.main-tab:hover::after{opacity:1}
+.main-tab:hover{color:var(--fg-secondary);background:rgba(226,192,116,0.02)}.main-tab:hover svg{opacity:.6}
 .main-tab.active{color:var(--fg-accent);border-bottom-color:var(--fg-accent)}.main-tab.active svg{opacity:1;color:var(--fg-accent)}
 .main-panel{display:none}.main-panel.active{display:block}
 
 /* ═══ HAMBURGER (mobile only) ═══ */
-.hamburger{display:none;background:none;border:1px solid var(--border-line);color:var(--fg-secondary);width:36px;height:36px;border-radius:8px;cursor:pointer;align-items:center;justify-content:center;margin-left:auto;transition:all .2s var(--ease);padding:0;flex-shrink:0}
+.hamburger{display:none;background:none;border:1px solid var(--border-line);color:var(--fg-secondary);width:36px;height:36px;border-radius:8px;cursor:pointer;align-items:center;justify-content:center;margin-left:auto;transition:all .2s var(--ease);padding:0;flex-shrink:0;align-self:center}
 .hamburger:hover{border-color:var(--border-accent);color:var(--fg-accent);background:rgba(226,192,116,0.04)}
 .hamburger .ico-x{display:none}
 .hamburger.open .ico-menu{display:none}
@@ -86,7 +89,7 @@ a{color:var(--fg-accent);text-decoration:underline;text-decoration-style:dotted;
 /* ═══ MOBILE NAV ═══ */
 .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:280;opacity:0;transition:opacity .3s var(--ease)}
 .mobile-overlay.open{display:block;opacity:1}
-.mobile-nav{display:none;position:fixed;top:52px;right:0;width:280px;max-width:85vw;background:var(--bg-raised);border-left:1px solid var(--border-line);border-bottom:1px solid var(--border-line);border-radius:0 0 0 12px;z-index:290;padding:8px;transform:translateX(100%);transition:transform .3s var(--ease);flex-direction:column;gap:2px}
+.mobile-nav{display:none;position:fixed;top:48px;right:0;width:280px;max-width:85vw;background:var(--bg-raised);border-left:1px solid var(--border-line);border-bottom:1px solid var(--border-line);border-radius:0 0 0 16px;z-index:290;padding:12px;transform:translateX(100%);transition:transform .35s var(--ease);flex-direction:column;gap:2px;box-shadow:var(--shadow-elevated)}
 .mobile-nav.open{display:flex;transform:translateX(0)}
 .mobile-nav-item{display:flex;align-items:center;gap:10px;padding:12px 14px;border:none;background:none;color:var(--fg-secondary);font-family:var(--font-body);font-size:13px;font-weight:500;border-radius:8px;cursor:pointer;transition:all .2s var(--ease);text-align:left;width:100%}
 .mobile-nav-item svg{flex-shrink:0;opacity:.5}
@@ -276,7 +279,7 @@ a{color:var(--fg-accent);text-decoration:underline;text-decoration-style:dotted;
 
 <!-- ====== HERO ====== -->
 <section class="hero">
-  <h1>Do <span class="gr">Lovable</span> ao <span class="gr">Terminal</span> ou <span class="gr">Desktop</span><br>com Superpoderes de IA</h1>
+  <h1>Do <span class="gold">Lovable</span> ao <span class="gold">Terminal</span> ou <span class="gold">Desktop</span><br>com <span class="gold">Superpoderes</span> de IA</h1>
   <p>Guia definitivo para iniciantes. Clique para expandir cada etapa. Escolha entre Terminal ou Desktop. Inclui vocabulário, squads e FAQ.</p>
   <div class="chips">
     <div class="chip"><span class="dot" style="background:var(--pk)"></span style="color:var(--fg-primary)">Lovable</div>
@@ -288,14 +291,33 @@ a{color:var(--fg-accent);text-decoration:underline;text-decoration-style:dotted;
   </div>
 </section>
 
-<!-- ====== MAIN TABS ====== -->
-<div class="main-tabs">
-  <button class="main-tab active" onclick="mainTab(event,'panel-guia')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Guia Passo a Passo</button>
-  <button class="main-tab" onclick="mainTab(event,'panel-dev')">🚀 Guia de Desenvolvimento</button>
-  <button class="main-tab" onclick="mainTab(event,'panel-squads')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Squads — Guia Completo</button>
-  <button class="main-tab" onclick="mainTab(event,'panel-vocab')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Vocabulário</button>
-  <button class="main-tab" onclick="mainTab(event,'panel-faq')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> FAQ / Dúvidas</button>
-</div>
+<!-- ═══ TOPBAR + NAV ═══ -->
+<header class="topbar" id="topbar">
+  <a class="topbar-brand" href="#">
+    <div class="topbar-mark"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+    <span class="topbar-name">Super Inteligênc[IA]</span>
+    <span class="topbar-tag">v7.0</span>
+  </a>
+  <nav class="topbar-nav" id="topbarNav">
+    <button class="main-tab active" onclick="mainTab(event,'panel-guia')" data-panel="panel-guia" data-label="Guia Passo a Passo"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span>Guia</span></button>
+    <button class="main-tab" onclick="mainTab(event,'panel-dev')" data-panel="panel-dev" data-label="Desenvolvimento"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg><span>Dev</span></button>
+    <button class="main-tab" onclick="mainTab(event,'panel-squads')" data-panel="panel-squads" data-label="Squads"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><span>Squads</span></button>
+    <button class="main-tab" onclick="mainTab(event,'panel-vocab')" data-panel="panel-vocab" data-label="Vocabulário"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Vocab</span></button>
+    <button class="main-tab" onclick="mainTab(event,'panel-faq')" data-panel="panel-faq" data-label="FAQ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>FAQ</span></button>
+  </nav>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <svg class="ico-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <svg class="ico-x" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+</header>
+<div class="mobile-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+<nav class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-item active" onclick="mainTab(event,'panel-guia');toggleMobileMenu()" data-panel="panel-guia"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span>Guia Passo a Passo</span></button>
+  <button class="mobile-nav-item" onclick="mainTab(event,'panel-dev');toggleMobileMenu()" data-panel="panel-dev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg><span>Desenvolvimento</span></button>
+  <button class="mobile-nav-item" onclick="mainTab(event,'panel-squads');toggleMobileMenu()" data-panel="panel-squads"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><span>Squads — Guia Completo</span></button>
+  <button class="mobile-nav-item" onclick="mainTab(event,'panel-vocab');toggleMobileMenu()" data-panel="panel-vocab"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Vocabulário</span></button>
+  <button class="mobile-nav-item" onclick="mainTab(event,'panel-faq');toggleMobileMenu()" data-panel="panel-faq"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>Perguntas Frequentes</span></button>
+</nav>
 
 <!-- ============================================================ -->
 <!-- PANEL 1: GUIA PASSO A PASSO                                  -->
@@ -413,7 +435,7 @@ a{color:var(--fg-accent);text-decoration:underline;text-decoration-style:dotted;
   <div class="section-body"><div class="section-inner">
     <div style="display:flex;flex-direction:column;gap:8px;margin:.8rem 0">
       <div style="background:var(--bg-raised);border:1px solid var(--border-line);border-radius:10px;padding:.8rem 1rem;display:flex;gap:12px;align-items:flex-start">
-        <div style="background:var(--g);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:.85rem">1</div>
+        <div style="background:rgba(34,197,94,.5);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:.85rem">1</div>
         <div><div style="font-weight:600;font-size:.88rem">Janela 1 — Servidor (localhost)</div><div style="font-size:.8rem;color:var(--fg-secondary)">Roda <code>npm run dev</code>. <strong>Não feche enquanto trabalha.</strong></div></div>
       </div>
       <div style="background:var(--bg-raised);border:1px solid var(--border-line);border-radius:10px;padding:.8rem 1rem;display:flex;gap:12px;align-items:flex-start">
@@ -470,7 +492,7 @@ a{color:var(--fg-accent);text-decoration:underline;text-decoration-style:dotted;
     <div class="section-arrow">▼</div>
   </div>
   <div class="section-body"><div class="section-inner">
-    <div class="ib note">🎯 Esta seção é um resumo rápido. Para o <strong>guia completo de Squads</strong> com exemplos para todas as áreas, veja a aba <strong>"<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Squads — Guia Completo"</strong> no menu superior.</div>
+    <div class="ib note"> Esta seção é um resumo rápido. Para o <strong>guia completo de Squads</strong> com exemplos para todas as áreas, veja a aba <strong>"<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Squads — Guia Completo"</strong> no menu superior.</div>
     <div class="cb"><div class="ch"><span class="lt">Criar um squad rapidamente</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="c"># Dentro do Claude Code com God Mode ativo:</span>
 <span class="cpk">/squad-creator-project</span>
 
@@ -667,13 +689,13 @@ Execute tudo usando aios-god-mode.</span></pre></div>
       <div style="font-size:.78rem;font-weight:700;color:var(--gold-300);text-transform:uppercase;letter-spacing:1px">Agentes Padrão vs. Squads</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%">
         <div style="flex:1;min-width:200px;background:var(--bg-surface);border:1px solid var(--border-line);border-radius:10px;padding:.8rem;text-align:center">
-          <div style="font-size:1.5rem;margin-bottom:.3rem">🤖</div>
+          <div style="font-size:1.5rem;margin-bottom:.3rem"></div>
           <div style="font-weight:600;font-size:.85rem">10 Agentes Padrão</div>
           <div style="font-size:.75rem;color:var(--fg-secondary);margin-top:.2rem">Vêm com o AIOS. Focados em desenvolvimento de software.</div>
         </div>
         <div style="display:flex;align-items:center;color:var(--ac);font-size:1.2rem;font-weight:700">+</div>
         <div style="flex:1;min-width:200px;background:var(--bg-surface);border:1px solid var(--cy);border-radius:10px;padding:.8rem;text-align:center">
-          <div style="font-size:1.5rem;margin-bottom:.3rem">🎯</div>
+          <div style="font-size:1.5rem;margin-bottom:.3rem"></div>
           <div style="font-weight:600;font-size:.85rem;color:var(--code-str)">Squads Personalizados</div>
           <div style="font-size:.75rem;color:var(--fg-secondary);margin-top:.2rem">Você cria. Para <strong>qualquer área</strong>. Com quantos agentes quiser.</div>
         </div>
@@ -696,9 +718,9 @@ Execute tudo usando aios-god-mode.</span></pre></div>
     <p style="font-size:.84rem;color:var(--fg-secondary);margin-bottom:.6rem">Antes de criar squads, você precisa ter:</p>
 
     <div style="display:flex;flex-direction:column;gap:6px">
-      <div style="display:flex;align-items:center;gap:10px;padding:.5rem .7rem;background:var(--bg-raised);border-radius:8px"><span style="font-size:1rem">✅</span><span style="font-size:.82rem"><strong>Node.js</strong> instalado (v18+)</span></div>
-      <div style="display:flex;align-items:center;gap:10px;padding:.5rem .7rem;background:var(--bg-raised);border-radius:8px"><span style="font-size:1rem">✅</span><span style="font-size:.82rem"><strong>Claude Code</strong> funcionando (Terminal ou Desktop)</span></div>
-      <div style="display:flex;align-items:center;gap:10px;padding:.5rem .7rem;background:var(--bg-raised);border-radius:8px"><span style="font-size:1rem">✅</span><span style="font-size:.82rem"><strong>AIOS</strong> instalado no projeto (via God Mode ou <code>npx aios-core install</code>)</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:.5rem .7rem;background:var(--bg-raised);border-radius:8px"><span style="font-size:1rem"></span><span style="font-size:.82rem"><strong>Node.js</strong> instalado (v18+)</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:.5rem .7rem;background:var(--bg-raised);border-radius:8px"><span style="font-size:1rem"></span><span style="font-size:.82rem"><strong>Claude Code</strong> funcionando (Terminal ou Desktop)</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:.5rem .7rem;background:var(--bg-raised);border-radius:8px"><span style="font-size:1rem"></span><span style="font-size:.82rem"><strong>AIOS</strong> instalado no projeto (via God Mode ou <code>npx aios-core install</code>)</span></div>
     </div>
 
     <div class="ib note" style="margin-top:.6rem">Se você seguiu o <strong>Guia Passo a Passo</strong> (aba anterior) até a Seção 4, já tem tudo pronto. Pode pular direto para a Seção 2 abaixo.</div>
@@ -722,12 +744,12 @@ Execute tudo usando aios-god-mode.</span></pre></div>
 
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:.6rem">
       <div style="flex:1;min-width:220px;background:var(--bg-raised);border:1px solid var(--border-line);border-radius:8px;padding:1rem">
-        <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--y);margin-bottom:.3rem;letter-spacing:.5px">📁 Squad de Projeto (local)</div>
+        <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--y);margin-bottom:.3rem;letter-spacing:.5px"> Squad de Projeto (local)</div>
         <div style="font-size:.8rem;color:var(--fg-secondary);line-height:1.45">Fica <strong>só neste projeto</strong>. Ideal quando o squad é específico para uma aplicação. Salvo na pasta <code>squads/</code> dentro do projeto.</div>
         <div class="cb" style="margin-top:.5rem"><div class="ch"><span class="lt">Comando</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">/squad-creator-project</span></pre></div>
       </div>
       <div style="flex:1;min-width:220px;background:var(--bg-raised);border:1px solid var(--border-line);border-radius:8px;padding:1rem">
-        <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--code-str);margin-bottom:.3rem;letter-spacing:.5px">🌐 Squad Global (user)</div>
+        <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--code-str);margin-bottom:.3rem;letter-spacing:.5px"> Squad Global (user)</div>
         <div style="font-size:.8rem;color:var(--fg-secondary);line-height:1.45">Fica <strong>disponível em qualquer projeto</strong> que você abrir com Claude Code. Instalado globalmente na sua máquina.</div>
         <div class="cb" style="margin-top:.5rem"><div class="ch"><span class="lt">Comando</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">/squad-creator-user</span></pre></div>
       </div>
@@ -799,8 +821,8 @@ Execute tudo usando aios-god-mode.</span></pre></div>
             <span style="color:var(--y);font-weight:700;font-size:.8rem;flex-shrink:0">2.</span>
             <span style="font-size:.8rem;color:var(--fg-secondary)"><strong>Caminhos de arquivo</strong> — Tem arquivos no computador? Indique o caminho.</span>
           </div>
-          <div style="display:flex;gap:8px;align-items:flex-start;padding:.4rem .6rem;background:var(--bg-code);border:1px solid var(--g);border-radius:8px">
-            <span style="color:var(--g);font-weight:700;font-size:.8rem;flex-shrink:0">3.</span>
+          <div style="display:flex;gap:8px;align-items:flex-start;padding:.4rem .6rem;background:var(--bg-code);border:1px solid rgba(34,197,94,.5);border-radius:8px">
+            <span style="color:rgba(34,197,94,.5);font-weight:700;font-size:.8rem;flex-shrink:0">3.</span>
             <span style="font-size:.8rem;color:var(--t)"><strong>Descrever verbalmente</strong> — A mais usada! Descreva em português o que quer.</span>
           </div>
           <div style="display:flex;gap:8px;align-items:flex-start;padding:.4rem .6rem;background:var(--bg-raised);border-radius:8px">
@@ -1190,8 +1212,113 @@ e revisor de qualidade de squads.</span></pre></div>
   <p style="margin-top:.2rem">Lovable + GitHub + Claude Code + AIOS + God Mode + Squads</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function cc(b){const p=b.closest('.cb').querySelector('pre');navigator.clipboard.writeText(p.innerText).then(()=>{b.textContent='✓ Copiado!';b.style.background='var(--g)';b.style.color='#fff';b.style.borderColor='var(--g)';setTimeout(()=>{b.textContent=b.dataset.orig||'Copiar';b.style.background='';b.style.color='';b.style.borderColor=''},2e3)})}
-function sw(e,id){const t=e.target.closest('.tabs');const c=[];let s=t.nextElementSibling;while(s&&s.classList.contains('tc')){c.push(s);s=s.nextElementSibling}t.querySelectorAll('.tb').forEach(b=>b.classList.remove('a'));e.target.classList.add('a');c.forEach(x=>x.classList.remove('a'));document.getElementById(id)?.classList.add('a')}
-function toggleSection(h){h.closest('.section').classList.toggle('open')}
-function mainTab(e,id){document.querySelectorAll('.main-tab').forEach(t=>t.classList.remove('active'));e.target.class
+<script>
+/* ═══ Copy code block ═══ */
+function cc(b){
+  var p=b.closest('.cb').querySelector('pre');
+  navigator.clipboard.writeText(p.innerText).then(function(){
+    b.textContent='Copiado';
+    b.style.background='rgba(34,197,94,.15)';
+    b.style.color='#4ade80';
+    b.style.borderColor='rgba(34,197,94,.3)';
+    setTimeout(function(){
+      b.textContent='Copiar';
+      b.style.background='';
+      b.style.color='';
+      b.style.borderColor='';
+    },2000);
+  });
+}
+
+/* ═══ Switch inner tabs (Terminal/Desktop etc) ═══ */
+function sw(e,id){
+  var btn=e.target.closest('.tb');
+  var tabBar=btn.closest('.tabs');
+  var containers=[];
+  var s=tabBar.nextElementSibling;
+  while(s&&s.classList.contains('tc')){
+    containers.push(s);
+    s=s.nextElementSibling;
+  }
+  tabBar.querySelectorAll('.tb').forEach(function(b){b.classList.remove('a')});
+  btn.classList.add('a');
+  containers.forEach(function(x){x.classList.remove('a')});
+  var target=document.getElementById(id);
+  if(target) target.classList.add('a');
+}
+
+/* ═══ Toggle collapsible sections ═══ */
+function toggleSection(h){
+  h.closest('.section').classList.toggle('open');
+}
+
+/* ═══ Main tab navigation (FIXED: uses closest() to handle SVG clicks) ═══ */
+function mainTab(e,id){
+  // Find the actual button (handles clicks on SVG/span children)
+  var clickedBtn=e.target.closest('.main-tab')||e.target.closest('.mobile-nav-item');
+  
+  // Update topbar tabs
+  document.querySelectorAll('.topbar-nav .main-tab').forEach(function(t){
+    t.classList.remove('active');
+  });
+  var topBtn=document.querySelector('.topbar-nav [data-panel="'+id+'"]');
+  if(topBtn) topBtn.classList.add('active');
+  
+  // Update mobile nav items
+  document.querySelectorAll('.mobile-nav-item').forEach(function(t){
+    t.classList.remove('active');
+  });
+  var mobileBtn=document.querySelector('.mobile-nav-item[data-panel="'+id+'"]');
+  if(mobileBtn) mobileBtn.classList.add('active');
+  
+  // Show the correct panel
+  document.querySelectorAll('.main-panel').forEach(function(p){
+    p.classList.remove('active');
+  });
+  var panel=document.getElementById(id);
+  if(panel) panel.classList.add('active');
+  
+  // Scroll to content area (below hero)
+  var topbar=document.getElementById('topbar');
+  if(topbar){
+    window.scrollTo({top:topbar.offsetTop,behavior:'smooth'});
+  }
+}
+
+/* ═══ Mobile hamburger menu ═══ */
+function toggleMobileMenu(){
+  var btn=document.getElementById('hamburger');
+  var nav=document.getElementById('mobileNav');
+  var overlay=document.getElementById('mobileOverlay');
+  if(!btn||!nav||!overlay) return;
+  var isOpen=nav.classList.contains('open');
+  if(isOpen){
+    btn.classList.remove('open');
+    nav.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.style.overflow='';
+  } else {
+    btn.classList.add('open');
+    nav.classList.add('open');
+    overlay.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+}
+
+/* ═══ Close mobile menu on resize to desktop ═══ */
+window.addEventListener('resize',function(){
+  if(window.innerWidth>640){
+    var nav=document.getElementById('mobileNav');
+    var overlay=document.getElementById('mobileOverlay');
+    var btn=document.getElementById('hamburger');
+    if(nav&&nav.classList.contains('open')){
+      nav.classList.remove('open');
+      overlay.classList.remove('open');
+      btn.classList.remove('open');
+      document.body.style.overflow='';
+    }
+  }
+});
+</script>
+</body>
+</html>
