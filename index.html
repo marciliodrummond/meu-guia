@@ -1,140 +1,275 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guia Definitivo: Lovable → GitHub → AIOS God Mode</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<title>Guia Definitivo: Lovable → GitHub → AIOS God Mode — Super Inteligênc[IA]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0a0f;--s:#12121a;--s2:#1a1a28;--bd:#2a2a3e;--ac:#7c5cfc;--ac2:#c084fc;--g:#22c55e;--y:#facc15;--o:#fb923c;--r:#ef4444;--bl:#38bdf8;--pk:#f472b6;--cy:#22d3ee;--t:#e8e8f0;--td:#8888a0;--tm:#55556e;--cb:#0d0d15;--rd:12px}
-*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-height:1.7;overflow-x:hidden}
-::-webkit-scrollbar{width:7px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bd);border-radius:4px}
-a{color:var(--ac2);text-decoration:underline dotted;text-underline-offset:3px}a:hover{color:var(--pk)}
+/* ═══════════════════════════════════════════════════════════════
+   SI DESIGN SYSTEM — Guia Definitivo v7.0
+   Aesthetic: Luxury Technical Blueprint
+   Signature: Gold precision grid + editorial numbering
+   ═══════════════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold-50:#fdf9f0;--gold-100:#faf0d9;--gold-200:#f3e0b3;--gold-300:#ecce87;--gold-400:#e2c074;--gold-500:#d4a84e;--gold-600:#b8883a;--gold-700:#96692c;--gold-800:#6e4d22;--gold-900:#4a3318;
+  --black:#030409;--gray-950:#08090f;--gray-900:#0e1017;--gray-850:#15171f;--gray-800:#1c1e28;--gray-750:#252730;--gray-700:#32343e;--gray-600:#484b58;--gray-500:#626574;--gray-400:#838696;--gray-300:#a5a8b6;--gray-200:#c5c7d0;--gray-100:#e0e1e7;--gray-50:#f2f3f5;--white:#fff;
+  --success:#22c55e;--warning:#fbbf24;--error:#ef4444;--info:#3b82f6;
+  --font-display:'Sora',sans-serif;--font-body:'DM Sans',sans-serif;--font-mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);--ease-out:cubic-bezier(0,0,0.2,1);
 
-/* === HERO === */
-.hero{min-height:95vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:-30%;background:radial-gradient(ellipse at 30% 20%,rgba(124,92,252,.12) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(192,132,252,.08) 0%,transparent 50%);z-index:0;animation:pg 8s ease-in-out infinite alternate}
-@keyframes pg{0%{opacity:.6;transform:scale(1)}to{opacity:1;transform:scale(1.04)}}
-.hero>*{position:relative;z-index:1}.hero h1{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,5vw,3.6rem);line-height:1.1;margin-bottom:1.2rem}
-.hero h1 .gr{background:linear-gradient(135deg,var(--ac),var(--ac2),var(--pk));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:1rem;color:var(--td);max-width:620px;margin-bottom:1.5rem}
-.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.chip{display:flex;align-items:center;gap:6px;background:var(--s);border:1px solid var(--bd);border-radius:50px;padding:7px 14px;font-size:.78rem;font-weight:500;transition:all .3s}
-.chip:hover{border-color:var(--ac);transform:translateY(-1px)}.chip .dot{width:7px;height:7px;border-radius:50%}
+  /* Legacy aliases for content compatibility */
+  --bg:var(--black);--s:var(--gray-950);--s2:var(--gray-900);--bd:rgba(255,255,255,0.1);
+  --ac:var(--gold-400);--ac2:var(--gold-500);--g:var(--success);--y:var(--warning);--o:#fb923c;--r:var(--error);
+  --bl:var(--info);--pk:#f472b6;--cy:#22d3ee;
+  --t:#edeef2;--td:#838696;--tm:#484b58;--cb:#0c0d14;--rd:8px;
 
-/* === TOP TABS (main navigation) === */
-.main-tabs{position:sticky;top:0;z-index:200;background:rgba(10,10,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);display:flex;justify-content:center;padding:0}
-.main-tab{padding:12px 20px;font-size:.82rem;font-weight:600;color:var(--td);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
-.main-tab:hover{color:var(--t)}.main-tab.active{color:var(--ac2);border-bottom-color:var(--ac2)}
+  --bg-page:var(--black);--bg-surface:var(--gray-950);--bg-raised:var(--gray-900);--bg-card:rgba(14,16,23,0.6);--bg-code:#0c0d14;
+  --fg-primary:#edeef2;--fg-secondary:#838696;--fg-muted:#484b58;--fg-accent:var(--gold-400);--fg-accent-dim:var(--gold-600);
+  --border-line:rgba(255,255,255,0.06);--border-strong:rgba(255,255,255,0.1);--border-accent:rgba(226,192,116,0.15);
+  --gold-glow-sm:0 0 20px rgba(226,192,116,0.06);--gold-glow-md:0 0 40px rgba(226,192,116,0.08);
+  --shadow-elevated:0 16px 48px rgba(0,0,0,0.4);
+  --grid-color:rgba(226,192,116,0.03);--grid-accent:rgba(226,192,116,0.06);
+  --code-kw:#c9a0ff;--code-str:#7dd3a8;--code-cmt:#484b58;--code-fn:#e2c074;--code-tag:#7eb8f7
+}
+::selection{background:rgba(226,192,116,0.25)}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+body{font-family:var(--font-body);font-size:15px;line-height:1.6;color:var(--fg-primary);background:var(--bg-page);overflow-x:hidden}
+
+/* ── Gold Precision Grid (brand DNA) ─── */
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--grid-color) 1px,transparent 1px),linear-gradient(90deg,var(--grid-color) 1px,transparent 1px),linear-gradient(var(--grid-accent) 1px,transparent 1px),linear-gradient(90deg,var(--grid-accent) 1px,transparent 1px);
+  background-size:60px 60px,60px 60px,300px 300px,300px 300px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 20%,transparent 70%)}
+
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--gray-700);border-radius:3px}
+a{color:var(--fg-accent);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}a:hover{color:var(--gold-300)}
+
+/* ═══ HERO ═══ */
+.hero{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;position:relative;z-index:1}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px);animation:orbFloat 12s ease-in-out infinite}
+.hero-orb-1{width:400px;height:400px;top:10%;right:-10%;background:radial-gradient(circle,rgba(226,192,116,0.12) 0%,transparent 70%)}
+.hero-orb-2{width:300px;height:300px;bottom:20%;left:-5%;background:radial-gradient(circle,rgba(226,192,116,0.08) 0%,transparent 70%);animation-delay:-4s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(20px,-30px) scale(1.05)}66%{transform:translate(-15px,15px) scale(0.95)}}
+.hero-label{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--fg-accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.hero-label::before{content:'';width:24px;height:1px;background:linear-gradient(90deg,var(--fg-accent),transparent)}
+.hero h1{font-family:var(--font-display);font-weight:800;font-size:clamp(1.8rem,5vw,3.2rem);line-height:1.08;letter-spacing:-0.04em;margin-bottom:1rem;max-width:700px}
+.hero h1 .gold{background:linear-gradient(135deg,var(--gold-300),var(--gold-500),var(--gold-400));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:15px;color:var(--fg-secondary);max-width:560px;line-height:1.65;margin-bottom:1.5rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.chip{display:flex;align-items:center;gap:6px;background:var(--bg-card);backdrop-filter:blur(8px);border:1px solid var(--border-line);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:500;transition:all .3s var(--ease)}
+.chip:hover{border-color:var(--border-accent)}.chip .dot{width:6px;height:6px;border-radius:50%}
+
+/* ═══ TOPBAR ═══ */
+.topbar{position:sticky;top:0;z-index:300;height:52px;display:flex;align-items:center;padding:0 20px;background:rgba(3,4,9,0.7);backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);border-bottom:1px solid var(--border-line);gap:0}
+.topbar-brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg-primary);flex-shrink:0}
+.topbar-mark{width:26px;height:26px;border-radius:6px;background:linear-gradient(135deg,var(--gold-400),var(--gold-600));display:flex;align-items:center;justify-content:center;box-shadow:var(--gold-glow-sm);color:var(--black)}
+.topbar-name{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:-0.02em}
+.topbar-tag{font-family:var(--font-mono);font-size:9px;font-weight:600;color:var(--fg-muted);margin-left:-2px}
+.topbar-nav{display:flex;align-items:center;gap:0;margin-left:auto}
+.main-tab{display:flex;align-items:center;gap:5px;padding:14px 14px;font-size:11px;font-weight:600;font-family:var(--font-body);color:var(--fg-muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s var(--ease);white-space:nowrap;letter-spacing:0}
+.main-tab svg{opacity:.5;transition:opacity .2s var(--ease);flex-shrink:0}
+.main-tab:hover{color:var(--fg-secondary)}.main-tab:hover svg{opacity:.7}
+.main-tab.active{color:var(--fg-accent);border-bottom-color:var(--fg-accent)}.main-tab.active svg{opacity:1;color:var(--fg-accent)}
 .main-panel{display:none}.main-panel.active{display:block}
 
-/* === CONTAINER === */
-.mx{max-width:860px;margin:0 auto;padding:0 1.5rem}
+/* ═══ HAMBURGER (mobile only) ═══ */
+.hamburger{display:none;background:none;border:1px solid var(--border-line);color:var(--fg-secondary);width:36px;height:36px;border-radius:8px;cursor:pointer;align-items:center;justify-content:center;margin-left:auto;transition:all .2s var(--ease);padding:0;flex-shrink:0}
+.hamburger:hover{border-color:var(--border-accent);color:var(--fg-accent);background:rgba(226,192,116,0.04)}
+.hamburger .ico-x{display:none}
+.hamburger.open .ico-menu{display:none}
+.hamburger.open .ico-x{display:block}
 
-/* === COLLAPSIBLE SECTIONS === */
-.section{margin:1rem 0;border:1px solid var(--bd);border-radius:var(--rd);overflow:hidden;background:var(--s);transition:all .3s}
-.section:hover{border-color:rgba(124,92,252,.3)}
-.section-head{display:flex;align-items:center;gap:12px;padding:1rem 1.2rem;cursor:pointer;user-select:none;transition:background .2s}
-.section-head:hover{background:var(--s2)}
-.section-num{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:1rem;color:#fff;flex-shrink:0}
+/* ═══ MOBILE NAV ═══ */
+.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:280;opacity:0;transition:opacity .3s var(--ease)}
+.mobile-overlay.open{display:block;opacity:1}
+.mobile-nav{display:none;position:fixed;top:52px;right:0;width:280px;max-width:85vw;background:var(--bg-raised);border-left:1px solid var(--border-line);border-bottom:1px solid var(--border-line);border-radius:0 0 0 12px;z-index:290;padding:8px;transform:translateX(100%);transition:transform .3s var(--ease);flex-direction:column;gap:2px}
+.mobile-nav.open{display:flex;transform:translateX(0)}
+.mobile-nav-item{display:flex;align-items:center;gap:10px;padding:12px 14px;border:none;background:none;color:var(--fg-secondary);font-family:var(--font-body);font-size:13px;font-weight:500;border-radius:8px;cursor:pointer;transition:all .2s var(--ease);text-align:left;width:100%}
+.mobile-nav-item svg{flex-shrink:0;opacity:.5}
+.mobile-nav-item:hover{background:rgba(226,192,116,0.04);color:var(--fg-primary)}
+.mobile-nav-item:hover svg{opacity:.8}
+.mobile-nav-item.active{color:var(--fg-accent);background:rgba(226,192,116,0.06)}
+.mobile-nav-item.active svg{opacity:1;color:var(--fg-accent)}
+
+/* ═══ ICON HELPERS ═══ */
+.ib-icon{display:inline-flex;vertical-align:middle;margin-right:4px}
+.ib-icon svg{width:14px;height:14px}
+.squad-scenario h4{display:flex;align-items:center;gap:6px}
+.squad-scenario h4 svg{flex-shrink:0;color:var(--fg-accent);width:16px;height:16px}
+
+/* ═══ RESPONSIVE BREAKPOINTS ═══ */
+@media(max-width:860px){
+  .topbar-nav .main-tab span{display:none}
+  .topbar-nav .main-tab{padding:14px 10px}
+}
+@media(max-width:640px){
+  .topbar-nav{display:none}
+  .hamburger{display:flex}
+  .hero h1{font-size:1.5rem}
+  .hero{min-height:75vh;padding:1.2rem}
+  .hero p{font-size:13px}
+  .chips{gap:4px}.chip{padding:4px 10px;font-size:11px}
+  .ag{grid-template-columns:1fr}
+  .dev-flow{flex-direction:column}
+  .mx{padding:0 .8rem}
+  .section-head{padding:12px 14px;gap:10px}
+  .section-num{width:32px;height:32px;font-size:12px}
+  .section-title{font-size:13px}
+  .section-inner{padding:0 14px 14px}
+  .cb pre{font-size:11px;padding:10px}
+  .ib{padding:10px 12px;font-size:12px}
+  .fl{padding:12px;gap:6px}
+  .fn{padding:8px 10px;font-size:10px;min-width:60px}
+  .faq-q{font-size:12px;padding:10px 14px}
+  .faq-a{font-size:12px;padding:0 14px 12px}
+  .vocab-term{font-size:13px}
+  .timeline-step{gap:10px}
+  .timeline-num{width:28px;height:28px;font-size:11px}
+  .timeline-content h4{font-size:13px}
+  .squad-scenario{padding:12px}
+  .squad-scenario h4{font-size:13px}
+  .squad-scenario p{font-size:11px}
+  .topbar{padding:0 12px;height:48px}
+  .topbar-mark{width:24px;height:24px}
+}
+@media(max-width:380px){
+  .hero h1{font-size:1.3rem}
+  .chips{display:none}
+  .hero{min-height:65vh}
+}
+
+/* ═══ LAYOUT ═══ */
+.mx{max-width:820px;margin:0 auto;padding:0 1.5rem;position:relative;z-index:1}
+
+/* ═══ SECTION SYSTEM ═══ */
+.section{margin:10px 0;border:1px solid var(--border-line);border-radius:10px;overflow:hidden;background:var(--bg-card);backdrop-filter:blur(8px);transition:all .3s var(--ease)}
+.section:hover{border-color:var(--border-accent)}
+.section-head{display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;user-select:none;transition:background .2s var(--ease)}
+.section-head:hover{background:rgba(226,192,116,0.02)}
+.section-num{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:14px;color:var(--black);flex-shrink:0;background:linear-gradient(135deg,var(--gold-400),var(--gold-500));box-shadow:var(--gold-glow-sm)}
 .section-info{flex:1}
-.section-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;line-height:1.2}
-.section-sub{color:var(--td);font-size:.78rem;margin-top:2px}
-.section-arrow{color:var(--td);font-size:1.2rem;transition:transform .3s;flex-shrink:0}
+.section-title{font-family:var(--font-display);font-weight:700;font-size:15px;line-height:1.2;letter-spacing:-0.02em}
+.section-sub{color:var(--fg-muted);font-size:12px;margin-top:2px}
+.section-arrow{color:var(--fg-muted);font-size:14px;transition:transform .3s var(--ease);flex-shrink:0}
 .section.open .section-arrow{transform:rotate(180deg)}
 .section-body{max-height:0;overflow:hidden;transition:max-height .5s ease}
 .section.open .section-body{max-height:none}
-.section-inner{padding:0 1.2rem 1.2rem}
+.section-inner{padding:0 20px 20px}
 
-/* === STEPS inside sections === */
-.st{position:relative;margin-bottom:1.5rem;padding-left:40px}
-.st::before{content:'';position:absolute;left:15px;top:32px;bottom:-1.5rem;width:2px;background:var(--bd)}
+/* ═══ STEPS ═══ */
+.st{position:relative;margin-bottom:1.4rem;padding-left:36px}
+.st::before{content:'';position:absolute;left:13px;top:30px;bottom:-1.4rem;width:1px;background:var(--border-line)}
 .st:last-child::before{display:none}
-.sd{position:absolute;left:6px;top:5px;width:18px;height:18px;border-radius:50%;background:var(--s2);border:2px solid var(--ac);z-index:1}
-.sd::after{content:'';position:absolute;top:3px;left:3px;width:8px;height:8px;border-radius:50%;background:var(--ac)}
-.st h3{font-size:.95rem;font-weight:600;margin-bottom:.3rem}.st p{color:var(--td);font-size:.85rem}
+.sd{position:absolute;left:5px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--bg-raised);border:2px solid var(--fg-accent);z-index:1}
+.sd::after{content:'';position:absolute;top:3px;left:3px;width:6px;height:6px;border-radius:50%;background:var(--fg-accent)}
+.st h3{font-family:var(--font-display);font-size:14px;font-weight:600;margin-bottom:3px;letter-spacing:-0.01em}
+.st p{color:var(--fg-secondary);font-size:13px}
 
-/* === CODE BLOCKS === */
-.cb{background:var(--cb);border:1px solid var(--bd);border-radius:var(--rd);margin:.6rem 0;overflow:hidden}
-.ch{display:flex;align-items:center;justify-content:space-between;padding:6px 12px;background:var(--s);border-bottom:1px solid var(--bd);font-size:.68rem}
-.lt{font-family:'JetBrains Mono',monospace;font-size:.64rem;padding:2px 8px;border-radius:50px;background:var(--s2);color:var(--ac2);text-transform:uppercase}
-.cp{background:none;border:1px solid var(--bd);color:var(--td);font-size:.66rem;padding:2px 9px;border-radius:50px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
-.cp:hover{background:var(--ac);color:#fff;border-color:var(--ac)}
-.cb pre{padding:12px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:.74rem;line-height:1.5;color:var(--t)}
-.c{color:var(--tm)}.cg{color:var(--g)}.cy2{color:var(--y)}.co{color:var(--o)}.cbl{color:var(--bl)}.cpk{color:var(--pk);font-weight:600}.ccn{color:var(--cy)}
+/* ═══ CODE BLOCKS ═══ */
+.cb{background:var(--bg-code);border:1px solid var(--border-line);border-radius:8px;margin:.5rem 0;overflow:hidden}
+.ch{display:flex;align-items:center;justify-content:space-between;padding:5px 12px;background:var(--bg-surface);border-bottom:1px solid var(--border-line);font-size:10px}
+.lt{font-family:var(--font-mono);font-size:9px;font-weight:600;padding:2px 8px;border-radius:100px;background:rgba(226,192,116,0.08);color:var(--fg-accent);letter-spacing:0.04em;text-transform:uppercase;border:1px solid var(--border-accent)}
+.cp{background:none;border:1px solid var(--border-line);color:var(--fg-muted);font-size:10px;font-weight:600;padding:2px 10px;border-radius:100px;cursor:pointer;font-family:var(--font-body);transition:all .2s var(--ease)}
+.cp:hover{background:rgba(226,192,116,0.08);color:var(--fg-accent);border-color:var(--border-accent)}
+.cb pre{padding:12px;overflow-x:auto;font-family:var(--font-mono);font-size:12px;line-height:1.6;color:var(--fg-primary)}
+.c{color:var(--code-cmt)}.cg{color:var(--code-str)}.cy2{color:var(--code-fn)}.co{color:var(--gold-300)}.cbl{color:var(--code-tag)}.cpk{color:var(--fg-accent);font-weight:600}.ccn{color:var(--code-tag)}
 
-/* === INFO BOXES === */
-.ib{border-radius:var(--rd);padding:.8rem 1rem;margin:.6rem 0;font-size:.82rem;border:1px solid;line-height:1.5}
-.ib.tip{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.2);color:var(--g)}
-.ib.warn{background:rgba(250,204,21,.06);border-color:rgba(250,204,21,.2);color:var(--y)}
-.ib.note{background:rgba(56,189,248,.06);border-color:rgba(56,189,248,.2);color:var(--bl)}
-.ib.purple{background:rgba(124,92,252,.06);border-color:rgba(124,92,252,.2);color:var(--ac2)}
+/* ═══ INFO BOXES ═══ */
+.ib{border-radius:8px;padding:14px 16px;margin:.5rem 0;font-size:13px;line-height:1.55;border:1px solid;backdrop-filter:blur(8px)}
+.ib.tip{background:rgba(34,197,94,0.04);border-color:rgba(34,197,94,0.12);border-left:2px solid var(--success);color:#86efac}
+.ib.warn{background:rgba(251,191,36,0.04);border-color:rgba(251,191,36,0.12);border-left:2px solid var(--warning);color:#fde68a}
+.ib.note{background:rgba(59,130,246,0.04);border-color:rgba(59,130,246,0.12);border-left:2px solid var(--info);color:#93c5fd}
+.ib.purple,.ib.gold{background:rgba(226,192,116,0.04);border-color:var(--border-accent);border-left:2px solid var(--fg-accent);color:var(--gold-200)}
 
-/* === BADGES === */
-.b-cli{display:inline-block;padding:1px 7px;border-radius:50px;font-size:.62rem;font-weight:600;background:rgba(124,92,252,.15);color:var(--ac2)}
-.b-desk{display:inline-block;padding:1px 7px;border-radius:50px;font-size:.62rem;font-weight:600;background:rgba(56,189,248,.15);color:var(--bl)}
-.b-both{display:inline-block;padding:1px 7px;border-radius:50px;font-size:.62rem;font-weight:600;background:rgba(34,197,94,.15);color:var(--g)}
+/* ═══ BADGES ═══ */
+.b-cli{display:inline-flex;align-items:center;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:600;background:rgba(226,192,116,0.08);color:var(--fg-accent);border:1px solid var(--border-accent);font-family:var(--font-mono);letter-spacing:0.02em}
+.b-desk{display:inline-flex;align-items:center;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:600;background:rgba(59,130,246,0.08);color:#60a5fa;border:1px solid rgba(59,130,246,0.15);font-family:var(--font-mono);letter-spacing:0.02em}
+.b-both{display:inline-flex;align-items:center;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:600;background:rgba(34,197,94,0.08);color:#4ade80;border:1px solid rgba(34,197,94,0.15);font-family:var(--font-mono);letter-spacing:0.02em}
 
-/* === TABS inside sections === */
-.tabs{display:flex;gap:2px;background:var(--s2);border:1px solid var(--bd);border-bottom:none;border-radius:var(--rd) var(--rd) 0 0;padding:5px 5px 0;overflow-x:auto}
-.tb{padding:7px 13px;font-size:.74rem;font-weight:500;font-family:'DM Sans',sans-serif;color:var(--td);background:transparent;border:none;border-radius:7px 7px 0 0;cursor:pointer;transition:all .2s;white-space:nowrap}
-.tb:hover{color:var(--t);background:rgba(255,255,255,.03)}.tb.a{color:var(--ac2);background:var(--cb)}
-.tc{display:none;background:var(--cb);border:1px solid var(--bd);border-top:none;border-radius:0 0 var(--rd) var(--rd);padding:1rem}
+/* ═══ TABS ═══ */
+.tabs{display:flex;gap:2px;background:var(--bg-surface);border:1px solid var(--border-line);border-bottom:none;border-radius:8px 8px 0 0;padding:4px 4px 0;overflow-x:auto}
+.tb{padding:7px 14px;font-size:12px;font-weight:500;font-family:var(--font-body);color:var(--fg-muted);background:transparent;border:none;border-radius:6px 6px 0 0;cursor:pointer;transition:all .2s var(--ease);white-space:nowrap}
+.tb:hover{color:var(--fg-secondary)}.tb.a{color:var(--fg-accent);background:var(--bg-code)}
+.tc{display:none;background:var(--bg-code);border:1px solid var(--border-line);border-top:none;border-radius:0 0 8px 8px;padding:14px}
 .tc.a{display:block}
 
-/* === AGENT GRID === */
-.ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:.7rem 0}
-.ac{background:var(--s);border:1px solid var(--bd);border-radius:var(--rd);padding:.8rem 1rem;transition:all .3s}
-.ac:hover{border-color:var(--ac);transform:translateY(-1px);box-shadow:0 4px 16px rgba(124,92,252,.1)}
-.ac .am{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--ac2);background:var(--s2);padding:1px 7px;border-radius:50px;display:inline-block;margin-bottom:4px}
-.ac .an{font-weight:600;font-size:.88rem;margin-bottom:1px}.ac .ad{font-size:.76rem;color:var(--td);line-height:1.35}
-.ac .ax{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--g);margin-top:4px;line-height:1.4}
+/* ═══ AGENT GRID ═══ */
+.ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;margin:.6rem 0}
+.ac{background:var(--bg-card);backdrop-filter:blur(8px);border:1px solid var(--border-line);border-left:2px solid transparent;border-radius:8px;padding:14px 14px 14px 16px;transition:all .3s var(--ease)}
+.ac:hover{border-left-color:var(--fg-accent);box-shadow:var(--gold-glow-sm)}
+.ac .am{font-family:var(--font-mono);font-size:10px;font-weight:600;color:var(--fg-accent);background:rgba(226,192,116,0.08);padding:2px 8px;border-radius:100px;display:inline-block;margin-bottom:4px;border:1px solid var(--border-accent)}
+.ac .an{font-family:var(--font-display);font-weight:650;font-size:13px;margin-bottom:2px;letter-spacing:-0.01em}
+.ac .ad{font-size:12px;color:var(--fg-secondary);line-height:1.4}
+.ac .ax{font-family:var(--font-mono);font-size:10px;color:var(--code-str);margin-top:4px;line-height:1.5}
 
-/* === FLOW DIAGRAM === */
-.fl{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;padding:1.2rem;margin:.8rem 0;background:var(--s);border:1px solid var(--bd);border-radius:var(--rd)}
-.fn{background:var(--s2);border:1px solid var(--bd);border-radius:8px;padding:8px 12px;font-size:.72rem;font-weight:600;text-align:center;min-width:75px;transition:all .3s}
-.fn:hover{border-color:var(--ac)}.fa{color:var(--ac);font-size:1rem;animation:ap 2s infinite}
+/* ═══ FLOW DIAGRAM ═══ */
+.fl{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;padding:20px;margin:.6rem 0;background:var(--bg-card);backdrop-filter:blur(8px);border:1px solid var(--border-line);border-radius:10px}
+.fn{background:var(--bg-raised);border:1px solid var(--border-line);border-radius:8px;padding:10px 14px;font-size:11px;font-weight:600;text-align:center;min-width:80px;transition:all .3s var(--ease)}
+.fn:hover{border-color:var(--border-accent);box-shadow:var(--gold-glow-sm)}
+.fa{color:var(--fg-accent);font-size:14px;animation:ap 2s infinite}
 @keyframes ap{0%,100%{opacity:.3}50%{opacity:1}}
 
-/* === VOCAB === */
-.vocab-card{background:var(--s);border:1px solid var(--bd);border-radius:var(--rd);margin:.6rem 0;overflow:hidden}
-.vocab-head{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;cursor:pointer;user-select:none}
-.vocab-head:hover{background:var(--s2)}
-.vocab-term{font-weight:700;font-size:.92rem;color:var(--t)}
-.vocab-pron{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--ac2);margin-left:8px}
-.vocab-body{display:none;padding:0 1rem .8rem;font-size:.82rem;color:var(--td);line-height:1.55}
-.vocab-card.open .vocab-body{display:block}
-.vocab-analogy{background:var(--s2);border-radius:8px;padding:.6rem .8rem;margin-top:.5rem;font-size:.78rem;border-left:3px solid var(--ac)}
-.vocab-cmd{background:var(--cb);border-radius:8px;padding:.5rem .8rem;margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--g)}
-.vocab-section{margin-top:1.5rem;padding-bottom:.3rem;border-bottom:1px solid var(--bd);font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--ac2)}
+/* ═══ DEV PHASES ═══ */
+.dev-phase{background:var(--bg-card);backdrop-filter:blur(8px);border:1px solid var(--border-line);border-left:2px solid transparent;border-radius:8px;margin:.6rem 0;padding:18px 18px 18px 20px;transition:all .3s var(--ease)}
+.dev-phase:hover{border-left-color:var(--fg-accent)}
+.dev-phase h3{font-family:var(--font-display);font-size:14px;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em}
+.dev-phase p{font-size:13px;color:var(--fg-secondary);line-height:1.5}
+.dev-flow{display:flex;align-items:stretch;gap:4px;margin:.8rem 0;overflow-x:auto;padding-bottom:.3rem}
+.dev-step{background:var(--bg-raised);border:1px solid var(--border-line);border-radius:8px;padding:10px;min-width:110px;flex:1;text-align:center;transition:all .3s var(--ease)}
+.dev-step:hover{border-color:var(--border-accent);box-shadow:var(--gold-glow-sm)}
+.dev-step .num{font-family:var(--font-mono);font-size:9px;font-weight:600;color:var(--fg-accent);margin-bottom:3px;letter-spacing:0.06em;text-transform:uppercase}
+.dev-step .label{font-family:var(--font-display);font-weight:600;font-size:12px;margin-bottom:2px}
+.dev-step .agent{font-family:var(--font-mono);font-size:10px;color:var(--code-str)}
 
-/* === DEV GUIDE VISUAL === */
-.dev-phase{background:var(--s);border:1px solid var(--bd);border-radius:var(--rd);margin:.8rem 0;padding:1.2rem}
-.dev-phase h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;display:flex;align-items:center;gap:8px}
-.dev-phase p{font-size:.82rem;color:var(--td);line-height:1.5}
-.dev-flow{display:flex;align-items:stretch;gap:6px;margin:.8rem 0;overflow-x:auto;padding-bottom:.5rem}
-.dev-step{background:var(--s2);border:1px solid var(--bd);border-radius:10px;padding:.8rem;min-width:140px;flex:1;text-align:center;transition:all .3s}
-.dev-step:hover{border-color:var(--ac);transform:translateY(-2px)}
-.dev-step .num{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--ac2);margin-bottom:4px}
-.dev-step .label{font-weight:600;font-size:.78rem;margin-bottom:2px}
-.dev-step .agent{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--g)}
-.dev-step .desc{font-size:.7rem;color:var(--tm);margin-top:3px}
-
-/* === FAQ === */
-.faq{background:var(--s);border:1px solid var(--bd);border-radius:var(--rd);margin:.5rem 0;overflow:hidden}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;cursor:pointer;font-weight:600;font-size:.85rem;user-select:none}
-.faq-q:hover{background:var(--s2)}
-.faq-a{display:none;padding:0 1rem .8rem;font-size:.82rem;color:var(--td);line-height:1.55}
+/* ═══ FAQ ═══ */
+.faq{background:var(--bg-card);backdrop-filter:blur(8px);border:1px solid var(--border-line);border-radius:8px;margin:.4rem 0;overflow:hidden;transition:border-color .3s var(--ease)}
+.faq:hover{border-color:var(--border-accent)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;cursor:pointer;font-family:var(--font-display);font-weight:600;font-size:13px;user-select:none;letter-spacing:-0.01em}
+.faq-q:hover{background:rgba(226,192,116,0.02)}
+.faq-a{display:none;padding:0 16px 14px;font-size:13px;color:var(--fg-secondary);line-height:1.6}
 .faq.open .faq-a{display:block}
-.faq-arrow{color:var(--td);transition:transform .3s;font-size:.9rem}
+.faq-arrow{color:var(--fg-muted);transition:transform .3s var(--ease);font-size:12px}
 .faq.open .faq-arrow{transform:rotate(180deg)}
 
-/* === MISC === */
-.dv{height:1px;background:linear-gradient(90deg,transparent,var(--bd),transparent);margin:1rem 0}
-.sq{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--td);line-height:1.55;padding:.8rem;background:var(--cb);border:1px solid var(--bd);border-radius:var(--rd);margin:.6rem 0}
-.sq .f{color:var(--y)}.sq .fi{color:var(--bl)}.sq .ds{color:var(--tm)}
-.ft{text-align:center;padding:2.5rem 1rem;color:var(--tm);font-size:.76rem;border-top:1px solid var(--bd);margin-top:2rem}
-@media(max-width:640px){.hero h1{font-size:1.7rem}.main-tab{padding:10px 12px;font-size:.74rem}.ag{grid-template-columns:1fr}.dev-flow{flex-direction:column}}
+/* ═══ VOCAB ═══ */
+.vocab-card{background:var(--bg-card);backdrop-filter:blur(8px);border:1px solid var(--border-line);border-radius:8px;margin:.4rem 0;overflow:hidden;transition:border-color .3s var(--ease)}
+.vocab-card:hover{border-color:var(--border-accent)}
+.vocab-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;cursor:pointer;user-select:none}
+.vocab-term{font-family:var(--font-display);font-weight:650;font-size:14px;letter-spacing:-0.01em}
+.vocab-pron{font-family:var(--font-mono);font-size:11px;color:var(--fg-accent);margin-left:8px}
+.vocab-body{display:none;padding:0 16px 12px;font-size:13px;color:var(--fg-secondary);line-height:1.6}
+.vocab-card.open .vocab-body{display:block}
+.vocab-analogy{background:var(--bg-raised);border-radius:6px;padding:10px 12px;margin-top:6px;font-size:12px;border-left:2px solid var(--fg-accent)}
+.vocab-section{margin-top:1.5rem;padding-bottom:6px;border-bottom:1px solid var(--border-line);font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--fg-accent);letter-spacing:-0.02em}
+
+/* ═══ SQUAD SCENARIOS ═══ */
+.squad-scenario{background:var(--bg-card);backdrop-filter:blur(8px);border:1px solid var(--border-line);border-left:2px solid var(--fg-accent);border-radius:8px;padding:16px 16px 16px 18px;margin:.5rem 0;transition:all .3s var(--ease)}
+.squad-scenario:hover{box-shadow:var(--gold-glow-sm)}
+.squad-scenario h4{font-family:var(--font-display);font-size:14px;font-weight:650;margin-bottom:4px;letter-spacing:-0.01em}
+.squad-scenario p{font-size:12px;color:var(--fg-secondary);line-height:1.5}
+.squad-scenario .squad-agents{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.squad-scenario .sa{font-family:var(--font-mono);font-size:10px;font-weight:500;padding:2px 8px;border-radius:100px;background:rgba(226,192,116,0.06);border:1px solid var(--border-accent);color:var(--fg-accent)}
+
+/* ═══ TIMELINE ═══ */
+.timeline-step{display:flex;gap:14px;margin:.7rem 0;align-items:flex-start}
+.timeline-num{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:13px;color:var(--black);flex-shrink:0;background:linear-gradient(135deg,var(--gold-400),var(--gold-500));box-shadow:var(--gold-glow-sm)}
+.timeline-content{flex:1}
+.timeline-content h4{font-family:var(--font-display);font-size:14px;font-weight:600;margin-bottom:3px;letter-spacing:-0.01em}
+.timeline-content p{font-size:12px;color:var(--fg-secondary);line-height:1.5}
+
+/* ═══ STRUCTURE TREE ═══ */
+.sq{font-family:var(--font-mono);font-size:12px;color:var(--fg-secondary);line-height:1.6;padding:14px;background:var(--bg-code);border:1px solid var(--border-line);border-radius:8px;margin:.5rem 0}
+.sq .f{color:var(--code-fn)}.sq .fi{color:var(--code-tag)}.sq .ds{color:var(--code-cmt)}
+
+/* ═══ FOOTER ═══ */
+.ft{text-align:center;padding:2.5rem 1rem;color:var(--fg-muted);font-size:12px;border-top:1px solid var(--border-line);margin-top:2rem;position:relative;z-index:1}
+.ft .gold{color:var(--fg-accent)}
+
+
 </style>
 </head>
 <body>
@@ -142,10 +277,10 @@ a{color:var(--ac2);text-decoration:underline dotted;text-underline-offset:3px}a:
 <!-- ====== HERO ====== -->
 <section class="hero">
   <h1>Do <span class="gr">Lovable</span> ao <span class="gr">Terminal</span> ou <span class="gr">Desktop</span><br>com Superpoderes de IA</h1>
-  <p>Guia definitivo para iniciantes. Clique para expandir cada etapa. Escolha entre Terminal ou Desktop. Inclui vocabulário, guia de desenvolvimento e FAQ.</p>
+  <p>Guia definitivo para iniciantes. Clique para expandir cada etapa. Escolha entre Terminal ou Desktop. Inclui vocabulário, squads e FAQ.</p>
   <div class="chips">
-    <div class="chip"><span class="dot" style="background:var(--pk)"></span>Lovable</div>
-    <div class="chip"><span class="dot" style="background:var(--t)"></span>GitHub</div>
+    <div class="chip"><span class="dot" style="background:var(--pk)"></span style="color:var(--fg-primary)">Lovable</div>
+    <div class="chip"><span class="dot" style="background:var(--t)"></span style="color:var(--fg-primary)">GitHub</div>
     <div class="chip"><span class="dot" style="background:var(--ac)"></span>Terminal (CLI)</div>
     <div class="chip"><span class="dot" style="background:var(--bl)"></span>Claude Desktop</div>
     <div class="chip"><span class="dot" style="background:var(--y)"></span>AIOS + God Mode</div>
@@ -155,10 +290,11 @@ a{color:var(--ac2);text-decoration:underline dotted;text-underline-offset:3px}a:
 
 <!-- ====== MAIN TABS ====== -->
 <div class="main-tabs">
-  <button class="main-tab active" onclick="mainTab(event,'panel-guia')">📋 Guia Passo a Passo</button>
-  <button class="main-tab" onclick="mainTab(event,'panel-dev')">🚀 Guia de Desenvolvimento AIOS</button>
-  <button class="main-tab" onclick="mainTab(event,'panel-vocab')">📖 Vocabulário</button>
-  <button class="main-tab" onclick="mainTab(event,'panel-faq')">❓ FAQ / Dúvidas</button>
+  <button class="main-tab active" onclick="mainTab(event,'panel-guia')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Guia Passo a Passo</button>
+  <button class="main-tab" onclick="mainTab(event,'panel-dev')">🚀 Guia de Desenvolvimento</button>
+  <button class="main-tab" onclick="mainTab(event,'panel-squads')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Squads — Guia Completo</button>
+  <button class="main-tab" onclick="mainTab(event,'panel-vocab')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Vocabulário</button>
+  <button class="main-tab" onclick="mainTab(event,'panel-faq')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> FAQ / Dúvidas</button>
 </div>
 
 <!-- ============================================================ -->
@@ -167,180 +303,151 @@ a{color:var(--ac2);text-decoration:underline dotted;text-underline-offset:3px}a:
 <div class="main-panel active" id="panel-guia">
 <div class="mx" style="padding-top:1.5rem">
 
-<!-- ─── INTRO ─── -->
 <div class="ib note" style="margin-bottom:1rem">
-  <strong>💡 Como usar este guia:</strong> Clique em cada seção para expandir. As etapas aparecem em ordem. Badges indicam se o passo é para <span class="b-cli">Terminal</span>, <span class="b-desk">Desktop</span> ou <span class="b-both">Ambas</span>. Todos os blocos de código têm botão <strong>Copiar</strong>.
+  <strong>Como usar este guia:</strong> Clique em cada seção para expandir. As etapas aparecem em ordem. Badges indicam se o passo é para <span class="b-cli">Terminal</span>, <span class="b-desk">Desktop</span> ou <span class="b-both">Ambas</span>. Todos os blocos de código têm botão <strong>Copiar</strong>.
 </div>
 
 <div style="display:flex;gap:10px;margin-bottom:1.5rem;flex-wrap:wrap">
-  <div style="flex:1;min-width:220px;background:var(--s);border:1px solid var(--bd);border-radius:var(--rd);padding:1rem">
-    <div style="font-size:.68rem;font-weight:600;text-transform:uppercase;color:var(--ac2);margin-bottom:.4rem">⌨️ Opção A — Terminal (CLI)</div>
-    <div style="font-size:.8rem;color:var(--td)">Abre o <strong>PowerShell</strong>, digita <code>claude</code> e faz tudo por texto. Mais controle, mais rápido.</div>
+  <div style="flex:1;min-width:220px;background:var(--bg-surface);border:1px solid var(--border-line);border-radius:8px;padding:1rem">
+    <div style="font-size:.68rem;font-weight:600;text-transform:uppercase;color:var(--gold-300);margin-bottom:.4rem"><span class="ib-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span> Opção A — Terminal (CLI)</div>
+    <div style="font-size:.8rem;color:var(--fg-secondary)">Abre o <strong>PowerShell</strong>, digita <code>claude</code> e faz tudo por texto. Mais controle, mais rápido.</div>
   </div>
-  <div style="flex:1;min-width:220px;background:var(--s);border:1px solid var(--bd);border-radius:var(--rd);padding:1rem">
-    <div style="font-size:.68rem;font-weight:600;text-transform:uppercase;color:var(--bl);margin-bottom:.4rem">🖥️ Opção B — Claude Desktop (Diretório)</div>
-    <div style="font-size:.8rem;color:var(--td)">Abre o <strong>app Claude Desktop</strong>, aba "Code", seleciona a pasta. Interface visual com diffs e sessões paralelas.</div>
+  <div style="flex:1;min-width:220px;background:var(--bg-surface);border:1px solid var(--border-line);border-radius:8px;padding:1rem">
+    <div style="font-size:.68rem;font-weight:600;text-transform:uppercase;color:var(--bl);margin-bottom:.4rem"><span class="ib-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></span> Opção B — Claude Desktop (Diretório)</div>
+    <div style="font-size:.8rem;color:var(--fg-secondary)">Abre o <strong>app Claude Desktop</strong>, aba "Code", seleciona a pasta. Interface visual com diffs e sessões paralelas.</div>
   </div>
 </div>
 
-<!-- ═══ SEÇÃO 0: VISÃO GERAL ═══ -->
+<!-- Seções 0-11 do Guia (mantidas iguais ao original) -->
+
 <div class="section open" data-section>
   <div class="section-head" onclick="toggleSection(this)">
-    <div class="section-num" style="background:linear-gradient(135deg,var(--ac),var(--ac2))">0</div>
+    <div class="section-num">0</div>
     <div class="section-info"><div class="section-title">Visão Geral do Fluxo</div><div class="section-sub">Como tudo se conecta</div></div>
     <div class="section-arrow">▼</div>
   </div>
   <div class="section-body"><div class="section-inner">
     <div class="fl">
-      <div class="fn" style="border-color:var(--pk)">🎨 Lovable<br><small style="color:var(--td)">Cria o app</small></div><div class="fa">→</div>
-      <div class="fn" style="border-color:var(--td)">🐙 GitHub<br><small style="color:var(--td)">Backup</small></div><div class="fa">→</div>
-      <div class="fn" style="border-color:var(--ac)">⌨️ Terminal<br><small style="color:var(--td)">OU</small><br>🖥️ Desktop</div><div class="fa">→</div>
-      <div class="fn" style="border-color:var(--y)">🤖 AIOS<br>⚡ God Mode</div><div class="fa">→</div>
-      <div class="fn" style="border-color:var(--pk)">🎨 Lovable<br><small style="color:var(--td)">Volta</small></div>
+      <div class="fn">Lovable<br><small style="color:var(--fg-secondary)">Cria o app</small></div><div class="fa">→</div>
+      <div class="fn">GitHub<br><small style="color:var(--fg-secondary)">Backup</small></div><div class="fa">→</div>
+      <div class="fn">Terminal<br><small style="color:var(--fg-secondary)">OU</small><br>Desktop</div><div class="fa">→</div>
+      <div class="fn">AIOS<br>God Mode</div><div class="fa">→</div>
+      <div class="fn">Lovable<br><small style="color:var(--fg-secondary)">Volta</small></div>
     </div>
-    <div class="ib purple"><strong>🔑 O que ambas opções têm em comum:</strong><br>• Usam o mesmo motor <strong>Claude Code</strong> (a IA que entende e edita código)<br>• Exigem <strong>conta paga do Claude (Pro ou Max)</strong> — NÃO é obrigatório ter API Key<br>• Acessam os mesmos agentes AIOS e squads<br>• Os comandos <code>@dev</code>, <code>@qa</code>, <code>/aios-god-mode</code> funcionam igual nas duas</div>
+    <div class="ib purple"><strong><span class="ib-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span> O que ambas opções têm em comum:</strong><br>• Usam o mesmo motor <strong>Claude Code</strong> (a IA que entende e edita código)<br>• Exigem <strong>conta paga do Claude (Pro ou Max)</strong> — NÃO é obrigatório ter API Key<br>• Acessam os mesmos agentes AIOS e squads<br>• Os comandos <code>@dev</code>, <code>@qa</code>, <code>/aios-god-mode</code> funcionam igual nas duas</div>
   </div></div>
 </div>
 
-<!-- ═══ SEÇÃO 1: PRÉ-REQUISITOS ═══ -->
 <div class="section" data-section>
   <div class="section-head" onclick="toggleSection(this)">
-    <div class="section-num" style="background:linear-gradient(135deg,#22c55e,#16a34a)">1</div>
+    <div class="section-num">1</div>
     <div class="section-info"><div class="section-title">Instalando os Pré-Requisitos</div><div class="section-sub">Node.js, Git, GitHub CLI, Claude Code — pelo site ou por comando</div></div>
     <div class="section-arrow">▼</div>
   </div>
   <div class="section-body"><div class="section-inner">
-
     <div class="st"><div class="sd"></div>
-      <h3><span class="b-both">Ambas</span> 1.1 — Node.js <small style="color:var(--td)">(motor que roda projetos JavaScript — sem ele, nada funciona)</small></h3>
+      <h3><span class="b-both">Ambas</span> 1.1 — Node.js</h3>
       <div class="tabs">
-        <button class="tb a" onclick="sw(event,'n1')">🌐 Pelo Site (mais fácil)</button>
-        <button class="tb" onclick="sw(event,'n2')">⌨️ Por Comando</button>
+        <button class="tb a" onclick="sw(event,'n1')">Via Site</button>
+        <button class="tb" onclick="sw(event,'n2')">Via Comando</button>
       </div>
-      <div class="tc a" id="n1"><p style="color:var(--td);font-size:.84rem">Acesse <a href="https://nodejs.org" target="_blank">nodejs.org</a> → clique no botão verde <strong>LTS</strong> (versão estável) → instale clicando "Next" em tudo.</p></div>
-      <div class="tc" id="n2"><div class="cb" style="border:none;margin:0"><div class="ch"><span class="lt">PowerShell (Admin)</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">winget</span> install <span class="cy2">--id</span> OpenJS.NodeJS.LTS <span class="cy2">--accept-source-agreements</span></pre></div><p style="color:var(--td);font-size:.8rem;margin-top:.4rem">⚠️ Abra o PowerShell <strong>como Administrador</strong> (botão direito → "Executar como administrador"). Depois feche e reabra.</p></div>
-      <p style="margin-top:.5rem">Verifique se instalou:</p>
-      <div class="cb"><div class="ch"><span class="lt">PowerShell</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">node</span> <span class="cy2">--version</span>
+      <div class="tc a" id="n1"><p style="color:var(--fg-secondary);font-size:.84rem">Acesse <a href="https://nodejs.org" target="_blank">nodejs.org</a> → clique no botão verde <strong>LTS</strong> (versão estável) → instale clicando "Next" em tudo.</p></div>
+      <div class="tc" id="n2"><div class="cb" style="border:none;margin:0"><div class="ch"><span class="lt">PowerShell (Admin)</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">winget</span> install <span class="cy2">--id</span> OpenJS.NodeJS.LTS <span class="cy2">--accept-source-agreements</span></pre></div></div>
+      <div class="cb"><div class="ch"><span class="lt">Verificar</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">node</span> <span class="cy2">--version</span>
 <span class="cg">npm</span> <span class="cy2">--version</span></pre></div>
-      <div class="ib tip">✅ Apareceu algo como <code>v20.x.x</code>? Perfeito, está instalado!</div>
+      <div class="ib tip">Apareceu algo como <code>v20.x.x</code>? Perfeito!</div>
     </div>
-
     <div class="st"><div class="sd"></div>
-      <h3><span class="b-both">Ambas</span> 1.2 — Git <small style="color:var(--td)">(ferramenta que conecta seu computador ao GitHub)</small></h3>
+      <h3><span class="b-both">Ambas</span> 1.2 — Git</h3>
       <div class="tabs">
-        <button class="tb a" onclick="sw(event,'g1')">🌐 Pelo Site</button>
-        <button class="tb" onclick="sw(event,'g2')">⌨️ Por Comando</button>
+        <button class="tb a" onclick="sw(event,'g1')">Via Site</button>
+        <button class="tb" onclick="sw(event,'g2')">Via Comando</button>
       </div>
-      <div class="tc a" id="g1"><p style="color:var(--td);font-size:.84rem">Acesse <a href="https://git-scm.com/downloads/win" target="_blank">git-scm.com</a> → instale clicando "Next" em tudo.</p></div>
+      <div class="tc a" id="g1"><p style="color:var(--fg-secondary);font-size:.84rem">Acesse <a href="https://git-scm.com/downloads/win" target="_blank">git-scm.com</a> → instale clicando "Next" em tudo.</p></div>
       <div class="tc" id="g2"><div class="cb" style="border:none;margin:0"><div class="ch"><span class="lt">PowerShell (Admin)</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">winget</span> install <span class="cy2">--id</span> Git.Git <span class="cy2">--accept-source-agreements</span></pre></div></div>
-      <p style="margin-top:.5rem">Configure seu nome e e-mail (mesmos do GitHub):</p>
-      <div class="cb"><div class="ch"><span class="lt">PowerShell</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">git</span> config <span class="cy2">--global</span> user.name <span class="co">"Seu Nome Aqui"</span>
-<span class="cg">git</span> config <span class="cy2">--global</span> user.email <span class="co">"seuemail@exemplo.com"</span></pre></div>
-      <div class="ib note">📌 O Git é obrigatório também para o Claude Desktop: sem ele, a aba Code não funciona no Windows.</div>
+      <div class="cb"><div class="ch"><span class="lt">Configurar</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">git</span> config <span class="cy2">--global</span> user.name <span class="co">"Seu Nome Aqui"</span>
+<span class="cg">git</span> config <span class="cy2">--global</span> user.email <span class="co">"<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7a091f0f3a1f171b131654191517">[email&#160;protected]</a>"</span></pre></div>
     </div>
-
     <div class="st"><div class="sd"></div>
-      <h3><span class="b-both">Ambas</span> 1.3 — GitHub CLI <small style="color:var(--td)">(cria Pull Requests pelo terminal)</small></h3>
-      <div class="cb"><div class="ch"><span class="lt">PowerShell (Admin)</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">winget</span> install <span class="cy2">--id</span> GitHub.cli <span class="cy2">--accept-source-agreements</span></pre></div>
-      <p>Ou baixe em <a href="https://cli.github.com" target="_blank">cli.github.com</a>. Depois faça login:</p>
-      <div class="cb"><div class="ch"><span class="lt">PowerShell</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">gh</span> auth login
-<span class="c"># Escolha: GitHub.com → HTTPS → Yes → Login with browser</span></pre></div>
+      <h3><span class="b-both">Ambas</span> 1.3 — GitHub CLI</h3>
+      <div class="cb"><div class="ch"><span class="lt">PowerShell (Admin)</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">winget</span> install <span class="cy2">--id</span> GitHub.cli <span class="cy2">--accept-source-agreements</span>
+<span class="cg">gh</span> auth login</pre></div>
     </div>
-
     <div class="st"><div class="sd"></div>
       <h3>1.4 — Claude Code</h3>
-      <div class="ib purple" style="margin-bottom:.5rem"><strong>🔑 Duas formas de autenticar (escolha UMA):</strong><br>• <strong>Conta Pro ou Max</strong> (assinatura em <a href="https://claude.ai" target="_blank">claude.ai</a>) — mais simples, faz login e pronto<br>• <strong>API Key</strong> (paga por uso em <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>) — alternativa avançada<br><br>⚠️ <strong>Se tem conta Pro ou Max, NÃO precisa de API Key.</strong></div>
+      <div class="ib purple"><strong><span class="ib-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span> Duas formas de autenticar (escolha UMA):</strong><br>• <strong>Conta Pro ou Max</strong> — mais simples, faz login e pronto<br>• <strong>API Key</strong> — alternativa avançada<br><strong>Se tem conta Pro ou Max, NÃO precisa de API Key.</strong></div>
       <div class="tabs">
-        <button class="tb a" onclick="sw(event,'cc1')"><span class="b-cli">Terminal</span> Instalar via npm</button>
-        <button class="tb" onclick="sw(event,'cc2')"><span class="b-desk">Desktop</span> Usar o App</button>
+        <button class="tb a" onclick="sw(event,'cc1')"><span class="b-cli">Terminal</span></button>
+        <button class="tb" onclick="sw(event,'cc2')"><span class="b-desk">Desktop</span></button>
       </div>
       <div class="tc a" id="cc1"><div class="cb" style="border:none;margin:0"><div class="ch"><span class="lt">PowerShell</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">npm</span> install <span class="cy2">-g</span> <span class="co">@anthropic-ai/claude-code</span>
-<span class="c"># Depois, em qualquer pasta de projeto:</span>
-<span class="cg">claude</span>
-<span class="c"># Na primeira vez, escolha "Claude.ai account" para login com Pro/Max</span></pre></div></div>
-      <div class="tc" id="cc2"><p style="color:var(--td);font-size:.84rem;line-height:1.6">1. Baixe o app em <a href="https://claude.ai/download" target="_blank">claude.ai/download</a><br>2. Instale e faça login com sua <strong>conta Pro ou Max</strong><br>3. Clique na aba <strong>"Code"</strong> (ao lado do chat)<br>4. Em "Environment" → selecione <strong>"Local"</strong><br>5. Selecione a pasta do projeto<br><br><strong>NÃO precisa instalar via npm.</strong> O app já inclui tudo.</p></div>
+<span class="cg">claude</span></pre></div></div>
+      <div class="tc" id="cc2"><p style="color:var(--fg-secondary);font-size:.84rem">Baixe em <a href="https://claude.ai/download" target="_blank">claude.ai/download</a> → Login → aba <strong>"Code"</strong> → selecione a pasta do projeto.</p></div>
     </div>
-
   </div></div>
 </div>
 
-<!-- ═══ SEÇÃO 2: CLONAR ═══ -->
 <div class="section" data-section>
   <div class="section-head" onclick="toggleSection(this)">
-    <div class="section-num" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)">2</div>
-    <div class="section-info"><div class="section-title">Clonar o Projeto do GitHub</div><div class="section-sub">Copiar o código para seu computador</div></div>
+    <div class="section-num">2</div>
+    <div class="section-info"><div class="section-title">Clonar o Projeto do GitHub</div><div class="section-sub">Copiar o código para seu computador e testar</div></div>
     <div class="section-arrow">▼</div>
   </div>
   <div class="section-body"><div class="section-inner">
-    <div class="cb"><div class="ch"><span class="lt">PowerShell</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="c"># Crie uma pasta para projetos (uma vez só)</span>
-<span class="cg">mkdir</span> <span class="co">~\projetos</span>
+    <div class="cb"><div class="ch"><span class="lt">PowerShell</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">mkdir</span> <span class="co">~\projetos</span>
 <span class="cg">cd</span> <span class="co">~\projetos</span>
-
-<span class="c"># Clone seu projeto (troque pelo SEU usuário e repo)</span>
 <span class="cg">git</span> clone <span class="cbl">https://github.com/SEU-USUARIO/NOME-DO-REPO.git</span>
 <span class="cg">cd</span> <span class="co">NOME-DO-REPO</span>
-
-<span class="c"># Instale dependências e teste</span>
-<span class="cg">npm</span> install
-<span class="cg">npm</span> run dev   <span class="c"># Abra http://localhost:5173 no navegador</span></pre></div>
-    <div class="ib tip">🌐 Se o app aparece no navegador, funciona! Pare com <kbd>Ctrl+C</kbd>.</div>
-    <div class="ib note"><span class="b-desk">Desktop</span> <strong>Depois de clonar</strong>, abra o Claude Desktop → aba Code → selecione a pasta <code>C:\Users\SeuNome\projetos\NOME-DO-REPO</code>. Cada sessão cria uma <strong>worktree</strong> (cópia isolada via Git) para trabalhar sem conflitos.</div>
+<span class="cg">npm</span> install</pre></div>
+    <div class="cb"><div class="ch"><span class="lt">Testar</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">npm</span> run dev</pre></div>
+    <div class="ib tip">Se o app aparece no navegador (<code>http://localhost:5173</code> ou <code>:8080</code>), funciona!</div>
   </div></div>
 </div>
 
-<!-- ═══ SEÇÃO 3: AIOS ═══ -->
 <div class="section" data-section>
   <div class="section-head" onclick="toggleSection(this)">
-    <div class="section-num" style="background:linear-gradient(135deg,var(--ac),#9333ea)">3</div>
-    <div class="section-info"><div class="section-title">Instalar o AIOS</div><div class="section-sub">Framework de agentes de IA — a base de tudo</div></div>
+    <div class="section-num">3</div>
+    <div class="section-info"><div class="section-title">Organizando seus Terminais (Janelas)</div><div class="section-sub">Entenda quantas janelas abrir e para quê cada uma serve</div></div>
     <div class="section-arrow">▼</div>
   </div>
   <div class="section-body"><div class="section-inner">
-    <div class="tabs">
-      <button class="tb a" onclick="sw(event,'a1')"><span class="b-cli">Terminal</span></button>
-      <button class="tb" onclick="sw(event,'a2')"><span class="b-desk">Desktop</span></button>
+    <div style="display:flex;flex-direction:column;gap:8px;margin:.8rem 0">
+      <div style="background:var(--bg-raised);border:1px solid var(--border-line);border-radius:10px;padding:.8rem 1rem;display:flex;gap:12px;align-items:flex-start">
+        <div style="background:var(--g);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:.85rem">1</div>
+        <div><div style="font-weight:600;font-size:.88rem">Janela 1 — Servidor (localhost)</div><div style="font-size:.8rem;color:var(--fg-secondary)">Roda <code>npm run dev</code>. <strong>Não feche enquanto trabalha.</strong></div></div>
+      </div>
+      <div style="background:var(--bg-raised);border:1px solid var(--border-line);border-radius:10px;padding:.8rem 1rem;display:flex;gap:12px;align-items:flex-start">
+        <div style="background:var(--ac);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:.85rem">2</div>
+        <div><div style="font-weight:600;font-size:.88rem">Janela 2 — Claude Code / Trabalho</div><div style="font-size:.8rem;color:var(--fg-secondary)">Instala God Mode, roda <code>claude</code>, usa agentes e Git.</div></div>
+      </div>
     </div>
-    <div class="tc a" id="a1"><div class="cb" style="border:none;margin:0"><div class="ch"><span class="lt">PowerShell</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">npx</span> <span class="co">aios-core</span> install
-<span class="c"># Aceite as opções padrão apertando Enter</span></pre></div></div>
-    <div class="tc" id="a2"><p style="color:var(--td);font-size:.84rem">Na aba Code do Desktop, digite no chat: <code>Execute npx aios-core install no terminal</code> — ou use o terminal embutido.</p></div>
-    <p style="margin-top:.5rem">Verifique:</p>
-    <div class="cb"><div class="ch"><span class="lt">PowerShell ou Chat</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">ls</span> <span class="co">.aios-core/development/agents/</span>
-<span class="c"># Deve mostrar: dev.md, qa.md, architect.md, pm.md, etc.</span></pre></div>
   </div></div>
 </div>
 
-<!-- ═══ SEÇÃO 4: GOD MODE ═══ -->
 <div class="section" data-section>
   <div class="section-head" onclick="toggleSection(this)">
-    <div class="section-num" style="background:linear-gradient(135deg,#facc15,#f59e0b)">4</div>
-    <div class="section-info"><div class="section-title">Instalar e Ativar o God Mode</div><div class="section-sub">10 agentes + 22 skills + 3 MCPs + 4 squads</div></div>
+    <div class="section-num">4</div>
+    <div class="section-info"><div class="section-title">Instalar e Ativar o AIOS God Mode</div><div class="section-sub">Um único comando instala tudo: AIOS + agentes + skills + MCPs + squads</div></div>
     <div class="section-arrow">▼</div>
   </div>
   <div class="section-body"><div class="section-inner">
-    <div class="cb"><div class="ch"><span class="lt">PowerShell ou terminal do Desktop</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="c"># Instala God Mode no projeto atual</span>
+    <div class="ib purple">O <strong>God Mode</strong> já inclui o AIOS automaticamente. Um único comando instala tudo.</div>
+    <div class="ib warn">Rode este comando <strong>direto no PowerShell</strong>, NÃO dentro do Claude Code.</div>
+    <div class="cb"><div class="ch"><span class="lt">PowerShell — Janela 2</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">cd</span> <span class="co">~\projetos\NOME-DO-PROJETO</span>
 <span class="cg">npx</span> <span class="co">create-aios-god-mode</span> <span class="co">.</span> <span class="cy2">--yes</span></pre></div>
-    <p style="margin-top:.6rem"><strong>Ativar o God Mode:</strong></p>
-    <div class="tabs">
-      <button class="tb a" onclick="sw(event,'ga1')"><span class="b-cli">Terminal</span></button>
-      <button class="tb" onclick="sw(event,'ga2')"><span class="b-desk">Desktop</span></button>
-    </div>
-    <div class="tc a" id="ga1"><div class="cb" style="border:none;margin:0"><div class="ch"><span class="lt">PowerShell</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">claude</span>            <span class="c"># Abre o Claude Code</span>
-<span class="cpk">/aios-god-mode</span>    <span class="c"># Ativa o God Mode</span>
-<span class="cpk">*help</span>             <span class="c"># Testa se funciona</span></pre></div></div>
-    <div class="tc" id="ga2"><p style="color:var(--td);font-size:.84rem;line-height:1.6">Na aba Code do Desktop, basta digitar no chat:<br><code style="font-size:.95rem;color:var(--pk)">/aios-god-mode</code><br>Depois: <code>*help</code> para testar.</p></div>
-    <div class="ib tip">✅ Quando ativar, você verá uma saudação confirmando todos os agentes ativos. A partir daqui, comandos são <strong>idênticos</strong> no Terminal e no Desktop.</div>
+    <div class="cb"><div class="ch"><span class="lt">Ativar</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">claude</span>
+<span class="cpk">/aios-god-mode</span>
+<span class="cpk">*help</span></pre></div>
   </div></div>
 </div>
 
-<!-- ═══ SEÇÃO 5: AGENTES ═══ -->
 <div class="section" data-section>
   <div class="section-head" onclick="toggleSection(this)">
-    <div class="section-num" style="background:linear-gradient(135deg,#f472b6,#ec4899)">5</div>
+    <div class="section-num">5</div>
     <div class="section-info"><div class="section-title">Guia dos 10 Agentes</div><div class="section-sub">Quem são, como ativar e comandos para copiar e colar</div></div>
     <div class="section-arrow">▼</div>
   </div>
   <div class="section-body"><div class="section-inner">
-    <div class="ib note">Ative com <code>@nome</code>. Dê comandos com <code>*comando</code>. Funciona <strong>igual</strong> no Terminal e Desktop.</div>
     <div class="ag">
       <div class="ac"><div class="am">@dev</div><div class="an">Dex — Desenvolvedor</div><div class="ad">Escreve código, implementa funcionalidades, corrige erros</div><div class="ax">*help · *execute-subtask 1.1 · *apply-qa-fix</div></div>
       <div class="ac"><div class="am">@qa</div><div class="an">Quinn — Qualidade</div><div class="ad">Testa, encontra bugs, valida segurança</div><div class="ax">*help · *review-build STORY-X · *verify-fix</div></div>
@@ -356,118 +463,78 @@ a{color:var(--ac2);text-decoration:underline dotted;text-underline-offset:3px}a:
   </div></div>
 </div>
 
-<!-- ═══ SEÇÃO 6: SQUADS ═══ -->
 <div class="section" data-section>
   <div class="section-head" onclick="toggleSection(this)">
-    <div class="section-num" style="background:linear-gradient(135deg,var(--cy),#06b6d4)">6</div>
-    <div class="section-info"><div class="section-title">Squads: Equipes de IA para Qualquer Área</div><div class="section-sub">Jurídico, saúde, marketing, educação, finanças...</div></div>
+    <div class="section-num">6</div>
+    <div class="section-info"><div class="section-title">Squads: Equipes Personalizadas de IA</div><div class="section-sub">Crie times para qualquer área — veja a aba "Squads" para o guia completo</div></div>
     <div class="section-arrow">▼</div>
   </div>
   <div class="section-body"><div class="section-inner">
-    <div class="cb"><div class="ch"><span class="lt">No Claude Code (Terminal ou Desktop)</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="c"># Criar squad personalizado:</span>
-<span class="cpk">@squad-creator</span> <span class="co">*create-squad squad-juridico</span>
+    <div class="ib note">🎯 Esta seção é um resumo rápido. Para o <strong>guia completo de Squads</strong> com exemplos para todas as áreas, veja a aba <strong>"<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Squads — Guia Completo"</strong> no menu superior.</div>
+    <div class="cb"><div class="ch"><span class="lt">Criar um squad rapidamente</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="c"># Dentro do Claude Code com God Mode ativo:</span>
+<span class="cpk">/squad-creator-project</span>
 
-<span class="c"># OU em linguagem natural (God Mode ativo):</span>
-<span class="co">Crie um squad jurídico com 5 agentes: advogado-senior,
-paralegal, pesquisador-juridico, compliance e gestor-processos</span></pre></div>
-    <div class="sq">
-<span class="f">squads/squad-juridico/</span>
-├── <span class="fi">config.yaml</span>           <span class="ds"># Configuração geral</span>
-├── <span class="f">agents/</span>                <span class="ds"># Definições dos agentes</span>
-│   ├── <span class="fi">advogado-senior.md</span> · <span class="fi">paralegal.md</span> · <span class="fi">pesquisador.md</span>
-│   ├── <span class="fi">compliance.md</span> · <span class="fi">gestor-processos.md</span>
-├── <span class="f">tasks/</span> · <span class="f">templates/</span> · <span class="f">checklists/</span> · <span class="f">data/</span>
-    </div>
-    <div class="cb"><div class="ch"><span class="lt">Outros exemplos de squads</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">@squad-creator</span> <span class="co">*create-squad squad-marketing</span>
-<span class="cpk">@squad-creator</span> <span class="co">*create-squad squad-saude</span>
-<span class="cpk">@squad-creator</span> <span class="co">*create-squad squad-financeiro</span>
-<span class="cpk">@squad-creator</span> <span class="co">*create-squad squad-educacao</span></pre></div>
+<span class="c"># OU para squad global (acessível em qualquer projeto):</span>
+<span class="cpk">/squad-creator-user</span></pre></div>
   </div></div>
 </div>
 
-<!-- ═══ SEÇÃO 7: DO ZERO ═══ -->
 <div class="section" data-section>
   <div class="section-head" onclick="toggleSection(this)">
-    <div class="section-num" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)">7</div>
+    <div class="section-num">7</div>
     <div class="section-info"><div class="section-title">Começar um Projeto do Zero</div><div class="section-sub">Sem Lovable — criar direto com AIOS + God Mode</div></div>
     <div class="section-arrow">▼</div>
   </div>
   <div class="section-body"><div class="section-inner">
     <div class="cb"><div class="ch"><span class="lt">PowerShell</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">npx</span> <span class="co">create-aios-god-mode</span> <span class="co">meu-projeto</span> <span class="cy2">--yes</span>
 <span class="cg">cd</span> <span class="co">meu-projeto</span>
-<span class="cg">claude</span>                    <span class="c"># ou abra no Claude Desktop</span>
-<span class="cpk">/aios-god-mode</span>
-
-<span class="c"># Conectar ao GitHub:</span>
-<span class="cg">git</span> init && <span class="cg">git</span> add <span class="cy2">.</span> && <span class="cg">git</span> commit <span class="cy2">-m</span> <span class="co">"feat: projeto inicial"</span>
-<span class="cg">gh</span> repo create <span class="co">meu-projeto</span> <span class="cy2">--public --source=. --push</span></pre></div>
-    <div class="ib note"><span class="b-desk">Desktop</span> Crie o projeto no PowerShell, depois abra a pasta no Claude Desktop → aba Code para trabalhar visualmente.</div>
+<span class="cg">claude</span>
+<span class="cpk">/aios-god-mode</span></pre></div>
   </div></div>
 </div>
 
-<!-- ═══ SEÇÃO 8: PUSH & PR ═══ -->
 <div class="section" data-section>
   <div class="section-head" onclick="toggleSection(this)">
-    <div class="section-num" style="background:linear-gradient(135deg,#fb923c,#ea580c)">8</div>
+    <div class="section-num">8</div>
     <div class="section-info"><div class="section-title">Enviar para o GitHub (Push & PR)</div><div class="section-sub">Salvando alterações na nuvem</div></div>
     <div class="section-arrow">▼</div>
   </div>
   <div class="section-body"><div class="section-inner">
-    <div class="tabs">
-      <button class="tb a" onclick="sw(event,'p1')"><span class="b-cli">Terminal</span></button>
-      <button class="tb" onclick="sw(event,'p2')"><span class="b-desk">Desktop</span></button>
-    </div>
-    <div class="tc a" id="p1"><div class="cb" style="border:none;margin:0"><div class="ch"><span class="lt">PowerShell</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">git</span> checkout <span class="cy2">-b</span> <span class="co">minha-feature</span>
+    <div class="cb"><div class="ch"><span class="lt">PowerShell</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">git</span> checkout <span class="cy2">-b</span> <span class="co">minha-feature</span>
 <span class="cg">git</span> add <span class="cy2">.</span>
 <span class="cg">git</span> commit <span class="cy2">-m</span> <span class="co">"feat: descreva aqui"</span>
 <span class="cg">git</span> push <span class="cy2">-u</span> origin <span class="co">minha-feature</span>
-<span class="cg">gh</span> pr create <span class="cy2">--title</span> <span class="co">"Título"</span> <span class="cy2">--body</span> <span class="co">"Descrição"</span>
-<span class="c"># Após merge: git checkout main && git pull</span></pre></div></div>
-    <div class="tc" id="p2"><p style="color:var(--td);font-size:.84rem;line-height:1.6">No Desktop, peça ao Claude:<br><code>Crie uma branch "minha-feature", commite tudo com "feat: descreva", faça push e crie um PR</code><br>Ou revise visualmente os diffs e depois peça o push.</p></div>
+<span class="cg">gh</span> pr create <span class="cy2">--title</span> <span class="co">"Título"</span> <span class="cy2">--body</span> <span class="co">"Descrição"</span></pre></div>
   </div></div>
 </div>
 
-<!-- ═══ SEÇÃO 9: SINCRONIZAR ═══ -->
 <div class="section" data-section>
   <div class="section-head" onclick="toggleSection(this)">
-    <div class="section-num" style="background:linear-gradient(135deg,#22c55e,#16a34a)">9</div>
+    <div class="section-num">9</div>
     <div class="section-info"><div class="section-title">Sincronizar Lovable ↔ Terminal/Desktop</div><div class="section-sub">Puxar mudanças e resolver conflitos</div></div>
     <div class="section-arrow">▼</div>
   </div>
   <div class="section-body"><div class="section-inner">
-    <div class="ib warn">⚠️ Quando você edita no Lovable, ele faz push automaticamente para o GitHub. Você só precisa "puxar".</div>
-    <div class="cb"><div class="ch"><span class="lt">Terminal ou chat do Desktop</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">git</span> checkout <span class="co">main</span>
+    <div class="cb"><div class="ch"><span class="lt">Terminal</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">git</span> checkout <span class="co">main</span>
 <span class="cg">git</span> pull
-<span class="cg">npm</span> install   <span class="c"># caso tenham pacotes novos</span></pre></div>
+<span class="cg">npm</span> install</pre></div>
   </div></div>
 </div>
 
-<!-- ═══ SEÇÃO 10: VOLTAR AO LOVABLE ═══ -->
 <div class="section" data-section>
   <div class="section-head" onclick="toggleSection(this)">
-    <div class="section-num" style="background:linear-gradient(135deg,var(--pk),#e11d48)">10</div>
+    <div class="section-num">10</div>
     <div class="section-info"><div class="section-title">Voltar o Projeto para o Lovable</div><div class="section-sub">Gerenciar visualmente após as melhorias</div></div>
     <div class="section-arrow">▼</div>
   </div>
   <div class="section-body"><div class="section-inner">
-    <p style="color:var(--td);font-size:.85rem;line-height:1.6">1. Faça push de tudo para o GitHub<br>2. No <a href="https://lovable.dev" target="_blank">Lovable</a> → Settings → GitHub → <strong>Sync / Pull changes</strong><br>3. O Lovable importa todas as alterações<br>4. Continue editando pelo Lovable normalmente</p>
-    <div class="fl" style="flex-direction:column;gap:4px;padding:1rem">
-      <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:center">
-        <div class="fn" style="font-size:.68rem">1️⃣ Lovable</div><div class="fa">→</div>
-        <div class="fn" style="font-size:.68rem">2️⃣ GitHub</div><div class="fa">→</div>
-        <div class="fn" style="font-size:.68rem">3️⃣ git pull</div><div class="fa">→</div>
-        <div class="fn" style="font-size:.68rem">4️⃣ AIOS</div><div class="fa">→</div>
-        <div class="fn" style="font-size:.68rem">5️⃣ Push+PR</div><div class="fa">→</div>
-        <div class="fn" style="font-size:.68rem">6️⃣ Lovable Sync</div>
-      </div>
-    </div>
+    <p style="color:var(--fg-secondary);font-size:.85rem;line-height:1.6">1. Faça push de tudo para o GitHub<br>2. No Lovable → Settings → GitHub → <strong>Sync / Pull changes</strong><br>3. Continue editando pelo Lovable normalmente</p>
   </div></div>
 </div>
 
-<!-- ═══ SEÇÃO 11: CHEATSHEET ═══ -->
 <div class="section" data-section>
   <div class="section-head" onclick="toggleSection(this)">
-    <div class="section-num" style="background:linear-gradient(135deg,#e879f9,#c026d3)">★</div>
+    <div class="section-num">★</div>
     <div class="section-info"><div class="section-title">Cheatsheet — Cola Rápida</div><div class="section-sub">Todos os comandos em um só lugar</div></div>
     <div class="section-arrow">▼</div>
   </div>
@@ -476,31 +543,29 @@ paralegal, pesquisador-juridico, compliance e gestor-processos</span></pre></div
 <span class="cg">winget</span> install <span class="cy2">--id</span> OpenJS.NodeJS.LTS <span class="cy2">--accept-source-agreements</span>
 <span class="cg">winget</span> install <span class="cy2">--id</span> Git.Git <span class="cy2">--accept-source-agreements</span>
 <span class="cg">winget</span> install <span class="cy2">--id</span> GitHub.cli <span class="cy2">--accept-source-agreements</span>
-<span class="cg">npm</span> install <span class="cy2">-g</span> <span class="co">@anthropic-ai/claude-code</span>  <span class="c"># só Terminal</span>
+<span class="cg">npm</span> install <span class="cy2">-g</span> <span class="co">@anthropic-ai/claude-code</span>
 <span class="cg">gh</span> auth login
 
 <span class="c"># CLONAR + INSTALAR</span>
 <span class="cg">git</span> clone <span class="cbl">https://github.com/USER/REPO.git</span> && <span class="cg">cd</span> <span class="co">REPO</span>
 <span class="cg">npm</span> install
-<span class="cg">npx</span> <span class="co">aios-core</span> install
-<span class="cg">npx</span> <span class="co">create-aios-god-mode</span> <span class="co">.</span> <span class="cy2">--yes</span>
 
-<span class="c"># ATIVAR</span>
-<span class="cg">claude</span>   <span class="c"># Terminal | ou aba Code no Desktop</span>
+<span class="c"># JANELA 1: SERVIDOR</span>
+<span class="cg">npm</span> run dev
+
+<span class="c"># JANELA 2: GOD MODE</span>
+<span class="cg">npx</span> <span class="co">create-aios-god-mode</span> <span class="co">.</span> <span class="cy2">--yes</span>
+<span class="cg">claude</span>
 <span class="cpk">/aios-god-mode</span>
 
-<span class="c"># AGENTES</span>
-<span class="cpk">@dev @qa @architect @pm @analyst @sm @po</span>
-<span class="cpk">@ux-design-expert @data-engineer @devops</span>
-<span class="cpk">@squad-creator</span> <span class="co">*create-squad nome</span>
+<span class="c"># SQUADS</span>
+<span class="cpk">/squad-creator-project</span>   <span class="c"># só neste projeto</span>
+<span class="cpk">/squad-creator-user</span>      <span class="c"># global</span>
 
 <span class="c"># PUSH & PR</span>
 <span class="cg">git</span> checkout <span class="cy2">-b</span> <span class="co">feature</span> && <span class="cg">git</span> add <span class="cy2">.</span>
 <span class="cg">git</span> commit <span class="cy2">-m</span> <span class="co">"feat: desc"</span> && <span class="cg">git</span> push <span class="cy2">-u</span> origin <span class="co">feature</span>
-<span class="cg">gh</span> pr create <span class="cy2">--title</span> <span class="co">"Título"</span> <span class="cy2">--body</span> <span class="co">"Desc"</span>
-
-<span class="c"># PUXAR DO LOVABLE</span>
-<span class="cg">git</span> checkout <span class="co">main</span> && <span class="cg">git</span> pull && <span class="cg">npm</span> install</pre></div>
+<span class="cg">gh</span> pr create <span class="cy2">--title</span> <span class="co">"Título"</span> <span class="cy2">--body</span> <span class="co">"Desc"</span></pre></div>
   </div></div>
 </div>
 
@@ -512,27 +577,23 @@ paralegal, pesquisador-juridico, compliance e gestor-processos</span></pre></div
 <div class="main-panel" id="panel-dev">
 <div class="mx" style="padding-top:1.5rem">
 
-<h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:.5rem">🚀 Como Desenvolver com AIOS + God Mode</h2>
-<p style="color:var(--td);font-size:.88rem;margin-bottom:1.5rem">Guia visual do fluxo de desenvolvimento. Do briefing ao deploy, com agentes fazendo o trabalho pesado.</p>
+<h2 style="font-family:var(--font-display);font-size:1.5rem;margin-bottom:.5rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> Como Desenvolver com AIOS + God Mode</h2>
+<p style="color:var(--fg-secondary);font-size:.88rem;margin-bottom:1.5rem">Do briefing ao deploy, com agentes fazendo o trabalho pesado.</p>
 
-<!-- FLOW VISUAL -->
 <div class="dev-flow">
-  <div class="dev-step" style="border-color:var(--pk)"><div class="num">FASE 1</div><div class="label">📝 Briefing</div><div class="agent">@pm</div><div class="desc">Coleta requisitos</div></div>
-  <div class="dev-step" style="border-color:var(--bl)"><div class="num">FASE 2</div><div class="label">🔍 Análise</div><div class="agent">@analyst</div><div class="desc">Pesquisa viabilidade</div></div>
-  <div class="dev-step" style="border-color:var(--ac)"><div class="num">FASE 3</div><div class="label">🏗️ Arquitetura</div><div class="agent">@architect</div><div class="desc">Projeta estrutura</div></div>
-  <div class="dev-step" style="border-color:var(--y)"><div class="num">FASE 4</div><div class="label">📋 Stories</div><div class="agent">@sm</div><div class="desc">Cria tarefas</div></div>
-  <div class="dev-step" style="border-color:var(--g)"><div class="num">FASE 5</div><div class="label">💻 Código</div><div class="agent">@dev</div><div class="desc">Implementa</div></div>
-  <div class="dev-step" style="border-color:var(--o)"><div class="num">FASE 6</div><div class="label">🧪 Testes</div><div class="agent">@qa</div><div class="desc">Valida qualidade</div></div>
-  <div class="dev-step" style="border-color:var(--cy)"><div class="num">FASE 7</div><div class="label">🚀 Deploy</div><div class="agent">@devops</div><div class="desc">Publica</div></div>
+  <div class="dev-step"><div class="num">FASE 1</div><div class="label">Briefing</div><div class="agent">@pm</div></div>
+  <div class="dev-step"><div class="num">FASE 2</div><div class="label">Análise</div><div class="agent">@analyst</div></div>
+  <div class="dev-step"><div class="num">FASE 3</div><div class="label">Arquitetura</div><div class="agent">@architect</div></div>
+  <div class="dev-step"><div class="num">FASE 4</div><div class="label">Stories</div><div class="agent">@sm</div></div>
+  <div class="dev-step"><div class="num">FASE 5</div><div class="label">Código</div><div class="agent">@dev</div></div>
+  <div class="dev-step"><div class="num">FASE 6</div><div class="label">Testes</div><div class="agent">@qa</div></div>
+  <div class="dev-step"><div class="num">FASE 7</div><div class="label">Deploy</div><div class="agent">@devops</div></div>
 </div>
 
-<!-- FASE 1 -->
 <div class="dev-phase">
-  <h3>📝 Fase 1 — Briefing (O que você quer construir?)</h3>
-  <p>Descreva o que quer em português. O @pm (Gerente de Produto) transforma isso em um documento técnico.</p>
-  <div class="cb"><div class="ch"><span class="lt">Exemplo prático</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">@pm</span> <span class="co">*gather-requirements</span>
-<span class="c"># O PM vai te perguntar sobre o projeto. Responda em português.</span>
-<span class="c"># Depois ele cria o PRD (Product Requirements Document).</span>
+  <h3>Fase 1 — Briefing</h3>
+  <p>Descreva o que quer em português. O @pm transforma em documento técnico.</p>
+  <div class="cb"><div class="ch"><span class="lt">Exemplo</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">@pm</span> <span class="co">*gather-requirements</span>
 
 <span class="c"># Ou descreva tudo de uma vez:</span>
 <span class="co">Quero criar um sistema de agendamento para clínica odontológica.
@@ -540,42 +601,31 @@ Precisa ter: cadastro de pacientes, agenda do dentista,
 confirmação por WhatsApp e painel administrativo.</span></pre></div>
 </div>
 
-<!-- FASE 2-3 -->
 <div class="dev-phase">
-  <h3>🔍 Fase 2 — Análise + 🏗️ Fase 3 — Arquitetura</h3>
-  <p>O @analyst pesquisa o que é necessário. O @architect projeta como tudo se conecta.</p>
-  <div class="cb"><div class="ch"><span class="lt">Copie em sequência</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">@analyst</span> <span class="co">*research-deps</span>       <span class="c"># Pesquisa bibliotecas necessárias</span>
-<span class="cpk">@architect</span> <span class="co">*assess-complexity</span>  <span class="c"># Avalia complexidade</span>
-<span class="cpk">@architect</span> <span class="co">*create-plan</span>        <span class="c"># Cria plano de implementação</span>
-<span class="cpk">@architect</span> <span class="co">*create-context</span>     <span class="c"># Cria contexto do projeto</span></pre></div>
+  <h3>Fases 2-3 — Análise + Arquitetura</h3>
+  <div class="cb"><div class="ch"><span class="lt">Sequência</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">@analyst</span> <span class="co">*research-deps</span>
+<span class="cpk">@architect</span> <span class="co">*assess-complexity</span>
+<span class="cpk">@architect</span> <span class="co">*create-plan</span></pre></div>
 </div>
 
-<!-- FASE 4-5 -->
 <div class="dev-phase">
-  <h3>📋 Fase 4 — Stories + 💻 Fase 5 — Código</h3>
-  <p>O @sm cria histórias detalhadas. O @dev implementa cada uma.</p>
-  <div class="cb"><div class="ch"><span class="lt">Copie em sequência</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">@sm</span> <span class="co">*create-story</span>             <span class="c"># Cria história de desenvolvimento</span>
-<span class="cpk">@dev</span> <span class="co">*execute-subtask 1.1</span>      <span class="c"># Implementa subtarefa 1</span>
-<span class="cpk">@dev</span> <span class="co">*execute-subtask 1.2</span>      <span class="c"># Implementa subtarefa 2</span>
-<span class="c"># Continue até completar todas as subtarefas</span></pre></div>
+  <h3>Fases 4-5 — Stories + Código</h3>
+  <div class="cb"><div class="ch"><span class="lt">Sequência</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">@sm</span> <span class="co">*create-story</span>
+<span class="cpk">@dev</span> <span class="co">*execute-subtask 1.1</span>
+<span class="cpk">@dev</span> <span class="co">*execute-subtask 1.2</span></pre></div>
 </div>
 
-<!-- FASE 6-7 -->
 <div class="dev-phase">
-  <h3>🧪 Fase 6 — Testes + 🚀 Fase 7 — Deploy</h3>
-  <p>O @qa revisa qualidade e segurança. O @devops publica.</p>
-  <div class="cb"><div class="ch"><span class="lt">Copie em sequência</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">@qa</span> <span class="co">*review-build STORY-1</span>     <span class="c"># QA revisa o código</span>
-<span class="cpk">@qa</span> <span class="co">*request-fix "Descrição"</span>  <span class="c"># Se achou problema</span>
-<span class="cpk">@dev</span> <span class="co">*apply-qa-fix</span>             <span class="c"># Dev corrige</span>
-<span class="cpk">@qa</span> <span class="co">*verify-fix</span>               <span class="c"># QA confirma</span>
-<span class="cpk">@devops</span> <span class="co">*deploy</span>               <span class="c"># Publica o projeto</span></pre></div>
+  <h3>Fases 6-7 — Testes + Deploy</h3>
+  <div class="cb"><div class="ch"><span class="lt">Sequência</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">@qa</span> <span class="co">*review-build STORY-1</span>
+<span class="cpk">@dev</span> <span class="co">*apply-qa-fix</span>
+<span class="cpk">@qa</span> <span class="co">*verify-fix</span>
+<span class="cpk">@devops</span> <span class="co">*deploy</span></pre></div>
 </div>
 
-<!-- GOD MODE SHORTCUT -->
-<div class="dev-phase" style="border-color:var(--y)">
-  <h3>⚡ Atalho God Mode — Tudo de Uma Vez</h3>
-  <p>Com God Mode ativo, você pode pedir tudo em um único prompt. O God Mode orquestra todos os agentes automaticamente.</p>
-  <div class="cb"><div class="ch"><span class="lt">Prompt completo — Copie e adapte</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="co">Ative aios-god-mode.
+<div class="dev-phase">
+  <h3>Atalho God Mode — Tudo de Uma Vez</h3>
+  <div class="cb"><div class="ch"><span class="lt">Prompt completo</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="co">Ative aios-god-mode.
 
 Crie um sistema completo de [DESCREVA SEU PROJETO].
 
@@ -585,126 +635,563 @@ Funcionalidades:
 3. [funcionalidade 3]
 
 Estilo visual: [descreva o visual desejado]
-Banco de dados: SQLite
-Incluir: painel admin, autenticação, exportação Excel
 
 Execute tudo usando aios-god-mode.</span></pre></div>
-  <div class="ib tip">💡 O God Mode vai acionar @architect, @ux-design-expert, @dev, @data-engineer, @qa e @devops automaticamente, na ordem correta.</div>
 </div>
 
 </div></div>
 
 <!-- ============================================================ -->
-<!-- PANEL 3: VOCABULÁRIO                                          -->
+<!-- PANEL 3: SQUADS — GUIA COMPLETO (NOVA ABA)                   -->
+<!-- ============================================================ -->
+<div class="main-panel" id="panel-squads">
+<div class="mx" style="padding-top:1.5rem;padding-bottom:2rem">
+
+<h2 style="font-family:var(--font-display);font-size:1.6rem;margin-bottom:.3rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Squads — Guia Completo</h2>
+<p style="color:var(--fg-secondary);font-size:.88rem;margin-bottom:1.5rem">Aprenda a criar equipes de agentes IA para <strong>qualquer área</strong>: jurídico, saúde, marketing, educação, finanças, criação de sites... o céu é o limite.</p>
+
+<!-- ═══ SQ-0: O QUE SÃO SQUADS ═══ -->
+<div class="section open" data-section>
+  <div class="section-head" onclick="toggleSection(this)">
+    <div class="section-num">0</div>
+    <div class="section-info"><div class="section-title">O que são Squads?</div><div class="section-sub">Pense em equipes completas de especialistas — só que de IA</div></div>
+    <div class="section-arrow">▼</div>
+  </div>
+  <div class="section-body"><div class="section-inner">
+
+    <div class="ib purple" style="font-size:.88rem"><strong>Analogia simples:</strong> Imagine que você quer construir uma casa. Você não contrata uma pessoa só — contrata um <strong>time</strong>: arquiteto, engenheiro, pedreiro, eletricista, encanador. Cada um sabe fazer uma coisa. Squads funcionam exatamente assim, mas com <strong>agentes de IA</strong>.</div>
+
+    <p style="font-size:.84rem;color:var(--fg-secondary);margin:.8rem 0">O AIOS já vem com 10 agentes padrão focados em desenvolvimento de software (<code>@dev</code>, <code>@qa</code>, <code>@architect</code>...). Mas e se você precisa de uma equipe de <strong>advogados</strong>? De <strong>médicos</strong>? De <strong>criadores de conteúdo</strong>? É para isso que existem os Squads.</p>
+
+    <div class="fl" style="flex-direction:column;gap:6px;padding:1rem">
+      <div style="font-size:.78rem;font-weight:700;color:var(--gold-300);text-transform:uppercase;letter-spacing:1px">Agentes Padrão vs. Squads</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%">
+        <div style="flex:1;min-width:200px;background:var(--bg-surface);border:1px solid var(--border-line);border-radius:10px;padding:.8rem;text-align:center">
+          <div style="font-size:1.5rem;margin-bottom:.3rem">🤖</div>
+          <div style="font-weight:600;font-size:.85rem">10 Agentes Padrão</div>
+          <div style="font-size:.75rem;color:var(--fg-secondary);margin-top:.2rem">Vêm com o AIOS. Focados em desenvolvimento de software.</div>
+        </div>
+        <div style="display:flex;align-items:center;color:var(--ac);font-size:1.2rem;font-weight:700">+</div>
+        <div style="flex:1;min-width:200px;background:var(--bg-surface);border:1px solid var(--cy);border-radius:10px;padding:.8rem;text-align:center">
+          <div style="font-size:1.5rem;margin-bottom:.3rem">🎯</div>
+          <div style="font-weight:600;font-size:.85rem;color:var(--code-str)">Squads Personalizados</div>
+          <div style="font-size:.75rem;color:var(--fg-secondary);margin-top:.2rem">Você cria. Para <strong>qualquer área</strong>. Com quantos agentes quiser.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ib tip"><strong>O mais incrível:</strong> você cria um squad em português, descrevendo o que quer. O AIOS monta toda a equipe — agentes, tarefas, hierarquia, fluxos — automaticamente.</div>
+  </div></div>
+</div>
+
+<!-- ═══ SQ-1: PRÉ-REQUISITOS ═══ -->
+<div class="section" data-section>
+  <div class="section-head" onclick="toggleSection(this)">
+    <div class="section-num">1</div>
+    <div class="section-info"><div class="section-title">Pré-Requisitos para Criar Squads</div><div class="section-sub">O que você precisa ter instalado antes de começar</div></div>
+    <div class="section-arrow">▼</div>
+  </div>
+  <div class="section-body"><div class="section-inner">
+
+    <p style="font-size:.84rem;color:var(--fg-secondary);margin-bottom:.6rem">Antes de criar squads, você precisa ter:</p>
+
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;align-items:center;gap:10px;padding:.5rem .7rem;background:var(--bg-raised);border-radius:8px"><span style="font-size:1rem">✅</span><span style="font-size:.82rem"><strong>Node.js</strong> instalado (v18+)</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:.5rem .7rem;background:var(--bg-raised);border-radius:8px"><span style="font-size:1rem">✅</span><span style="font-size:.82rem"><strong>Claude Code</strong> funcionando (Terminal ou Desktop)</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:.5rem .7rem;background:var(--bg-raised);border-radius:8px"><span style="font-size:1rem">✅</span><span style="font-size:.82rem"><strong>AIOS</strong> instalado no projeto (via God Mode ou <code>npx aios-core install</code>)</span></div>
+    </div>
+
+    <div class="ib note" style="margin-top:.6rem">Se você seguiu o <strong>Guia Passo a Passo</strong> (aba anterior) até a Seção 4, já tem tudo pronto. Pode pular direto para a Seção 2 abaixo.</div>
+
+    <p style="font-size:.84rem;color:var(--fg-secondary);margin-top:.6rem"><strong>Ainda não tem o AIOS instalado?</strong> Escolha uma das duas formas:</p>
+    <div class="cb"><div class="ch"><span class="lt">Opção A — Via God Mode (recomendado)</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">npx</span> <span class="co">create-aios-god-mode</span> <span class="co">meu-projeto</span> <span class="cy2">--yes</span>
+<span class="cg">cd</span> <span class="co">meu-projeto</span></pre></div>
+    <div class="cb"><div class="ch"><span class="lt">Opção B — Via AIOS Core direto</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">npx</span> <span class="co">aios-core</span> install</pre></div>
+
+  </div></div>
+</div>
+
+<!-- ═══ SQ-2: ESCOLHENDO O ESCOPO ═══ -->
+<div class="section" data-section>
+  <div class="section-head" onclick="toggleSection(this)">
+    <div class="section-num">2</div>
+    <div class="section-info"><div class="section-title">Escolha: Squad Local ou Global?</div><div class="section-sub">Entenda a diferença antes de criar</div></div>
+    <div class="section-arrow">▼</div>
+  </div>
+  <div class="section-body"><div class="section-inner">
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:.6rem">
+      <div style="flex:1;min-width:220px;background:var(--bg-raised);border:1px solid var(--border-line);border-radius:8px;padding:1rem">
+        <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--y);margin-bottom:.3rem;letter-spacing:.5px">📁 Squad de Projeto (local)</div>
+        <div style="font-size:.8rem;color:var(--fg-secondary);line-height:1.45">Fica <strong>só neste projeto</strong>. Ideal quando o squad é específico para uma aplicação. Salvo na pasta <code>squads/</code> dentro do projeto.</div>
+        <div class="cb" style="margin-top:.5rem"><div class="ch"><span class="lt">Comando</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">/squad-creator-project</span></pre></div>
+      </div>
+      <div style="flex:1;min-width:220px;background:var(--bg-raised);border:1px solid var(--border-line);border-radius:8px;padding:1rem">
+        <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--code-str);margin-bottom:.3rem;letter-spacing:.5px">🌐 Squad Global (user)</div>
+        <div style="font-size:.8rem;color:var(--fg-secondary);line-height:1.45">Fica <strong>disponível em qualquer projeto</strong> que você abrir com Claude Code. Instalado globalmente na sua máquina.</div>
+        <div class="cb" style="margin-top:.5rem"><div class="ch"><span class="lt">Comando</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">/squad-creator-user</span></pre></div>
+      </div>
+    </div>
+
+    <div class="ib tip"><strong>Dica prática:</strong> Use <strong>project</strong> para squads de nicho (ex: squad só para este e-commerce). Use <strong>user</strong> para squads que você quer reusar (ex: squad jurídico que serve para vários clientes).</div>
+
+  </div></div>
+</div>
+
+<!-- ═══ SQ-3: CRIAÇÃO PASSO A PASSO ═══ -->
+<div class="section open" data-section>
+  <div class="section-head" onclick="toggleSection(this)">
+    <div class="section-num">3</div>
+    <div class="section-info"><div class="section-title">Criando seu Squad — Passo a Passo</div><div class="section-sub">O fluxo completo, do comando ao squad funcionando</div></div>
+    <div class="section-arrow">▼</div>
+  </div>
+  <div class="section-body"><div class="section-inner">
+
+    <!-- PASSO 1 -->
+    <div class="timeline-step">
+      <div class="timeline-num">1</div>
+      <div class="timeline-content">
+        <h4>Abra o Claude Code e ative o AIOS</h4>
+        <p>Se ainda não ativou, faça isso primeiro.</p>
+        <div class="cb"><div class="ch"><span class="lt">Terminal</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">cd</span> <span class="co">~\projetos\MEU-PROJETO</span>
+<span class="cg">claude</span>
+<span class="cpk">/aios-god-mode</span></pre></div>
+      </div>
+    </div>
+
+    <!-- PASSO 2 -->
+    <div class="timeline-step">
+      <div class="timeline-num">2</div>
+      <div class="timeline-content">
+        <h4>Inicie o Squad Creator</h4>
+        <p>Escolha <strong>project</strong> (só este projeto) ou <strong>user</strong> (global).</p>
+        <div class="cb"><div class="ch"><span class="lt">Dentro do Claude Code</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="c"># Para squad só neste projeto:</span>
+<span class="cpk">/squad-creator-project</span>
+
+<span class="c"># Para squad global:</span>
+<span class="cpk">/squad-creator-user</span></pre></div>
+        <div class="ib note" style="margin-top:.4rem">O Squad Creator vai abrir e mostrar os comandos disponíveis. O principal é o <code>*design-squad</code>.</div>
+      </div>
+    </div>
+
+    <!-- PASSO 3 -->
+    <div class="timeline-step">
+      <div class="timeline-num">3</div>
+      <div class="timeline-content">
+        <h4>Escolha o método: Design Squad (recomendado)</h4>
+        <p>O <code>*design-squad</code> é guiado — ele te pergunta tudo. É o melhor caminho para iniciantes.</p>
+        <div class="cb"><div class="ch"><span class="lt">Copie e cole</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">*design-squad</span></pre></div>
+      </div>
+    </div>
+
+    <!-- PASSO 4 -->
+    <div class="timeline-step">
+      <div class="timeline-num">4</div>
+      <div class="timeline-content">
+        <h4>Escolha como fornecer a documentação</h4>
+        <p>O Squad Creator vai perguntar como você quer descrever seu squad. São 5 opções:</p>
+        <div style="display:flex;flex-direction:column;gap:5px;margin:.5rem 0">
+          <div style="display:flex;gap:8px;align-items:flex-start;padding:.4rem .6rem;background:var(--bg-raised);border-radius:8px">
+            <span style="color:var(--y);font-weight:700;font-size:.8rem;flex-shrink:0">1.</span>
+            <span style="font-size:.8rem;color:var(--fg-secondary)"><strong>Colar texto/documento</strong> — Já tem um PRD, especificação ou briefing pronto? Cole aqui.</span>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start;padding:.4rem .6rem;background:var(--bg-raised);border-radius:8px">
+            <span style="color:var(--y);font-weight:700;font-size:.8rem;flex-shrink:0">2.</span>
+            <span style="font-size:.8rem;color:var(--fg-secondary)"><strong>Caminhos de arquivo</strong> — Tem arquivos no computador? Indique o caminho.</span>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start;padding:.4rem .6rem;background:var(--bg-code);border:1px solid var(--g);border-radius:8px">
+            <span style="color:var(--g);font-weight:700;font-size:.8rem;flex-shrink:0">3.</span>
+            <span style="font-size:.8rem;color:var(--t)"><strong>Descrever verbalmente</strong> — A mais usada! Descreva em português o que quer.</span>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start;padding:.4rem .6rem;background:var(--bg-raised);border-radius:8px">
+            <span style="color:var(--y);font-weight:700;font-size:.8rem;flex-shrink:0">4.</span>
+            <span style="font-size:.8rem;color:var(--fg-secondary)"><strong>Google Drive</strong> — Buscar documentação direto do seu Drive.</span>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start;padding:.4rem .6rem;background:var(--bg-raised);border-radius:8px">
+            <span style="color:var(--y);font-weight:700;font-size:.8rem;flex-shrink:0">5.</span>
+            <span style="font-size:.8rem;color:var(--fg-secondary)"><strong>Outro</strong> — Método personalizado.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSO 5 -->
+    <div class="timeline-step">
+      <div class="timeline-num">5</div>
+      <div class="timeline-content">
+        <h4>Descreva o que quer (a parte mais importante!)</h4>
+        <p>Aqui vai a <strong>regra de ouro</strong>: quanto mais detalhes, melhor o resultado. O input é proporcional ao output.</p>
+        <div class="ib warn"><strong><strong>O que incluir na descrição:</strong></strong><br>
+        • <strong>Domínio/nicho</strong> — Sobre o que é? (ex: direito previdenciário, saúde mental, marketing digital)<br>
+        • <strong>Objetivo</strong> — O que o squad deve fazer? (ex: criar petições, montar planos de marketing)<br>
+        • <strong>Agentes sugeridos</strong> — Se já tem ideia de quem precisa na equipe (ex: advogado sênior, redator, revisor)<br>
+        • <strong>Workflows</strong> — Quais os fluxos de trabalho? (ex: análise → redação → revisão → entrega)<br>
+        • <strong>Integrações</strong> — Ferramentas externas? (ex: API do WhatsApp, planilhas)<br>
+        • <strong>Público-alvo</strong> — Quem vai usar o resultado?</div>
+
+        <div class="ib tip" style="margin-top:.5rem"><strong>Macete:</strong> Não precisa preencher tudo. Escreva pelo menos o domínio, o objetivo e os agentes que imagina. O Squad Creator completa o resto e te pergunta se quer ajustar.</div>
+      </div>
+    </div>
+
+    <!-- PASSO 6 -->
+    <div class="timeline-step">
+      <div class="timeline-num">6</div>
+      <div class="timeline-content">
+        <h4>Revise e ajuste os agentes</h4>
+        <p>O AIOS vai sugerir uma lista de agentes. Você pode:</p>
+        <div style="display:flex;flex-direction:column;gap:4px;margin:.4rem 0">
+          <div style="font-size:.82rem;color:var(--fg-secondary)"><strong>Aceitar todos</strong> — se gostou da sugestão</div>
+          <div style="font-size:.82rem;color:var(--fg-secondary)"><strong>Revisar</strong> — modificar nomes, funções ou instruções</div>
+          <div style="font-size:.82rem;color:var(--fg-secondary)"><strong>Adicionar mais</strong> — digite "Adicione [nome do agente]"</div>
+        </div>
+        <div class="ib note">Você pode adicionar agentes a qualquer momento escrevendo, por exemplo: <code>Adicione um agente de storytelling e um de UX</code></div>
+      </div>
+    </div>
+
+    <!-- PASSO 7 -->
+    <div class="timeline-step">
+      <div class="timeline-num">7</div>
+      <div class="timeline-content">
+        <h4>Revise e ajuste as tasks (tarefas)</h4>
+        <p>Para cada agente, o AIOS cria tarefas com <strong>input</strong> (o que recebe) e <strong>output</strong> (o que entrega). Revise se faz sentido e ajuste se necessário.</p>
+      </div>
+    </div>
+
+    <!-- PASSO 8 -->
+    <div class="timeline-step">
+      <div class="timeline-num">8</div>
+      <div class="timeline-content">
+        <h4>Gerar o Blueprint e criar!</h4>
+        <p>Confirme tudo e o AIOS gera o <strong>blueprint final</strong> — um resumo com total de agentes, tasks, ajustes e uma nota de confiança (%). Depois ele cria toda a estrutura de arquivos.</p>
+        <div class="ib tip"><strong>A criação pode demorar alguns minutos.</strong> Isso é normal e é bom sinal — significa que o AIOS está criando uma estrutura robusta e detalhada. Quanto mais demora, melhor o resultado.</div>
+      </div>
+    </div>
+
+  </div></div>
+</div>
+
+<!-- ═══ SQ-4: ESTRUTURA DE ARQUIVOS ═══ -->
+<div class="section" data-section>
+  <div class="section-head" onclick="toggleSection(this)">
+    <div class="section-num">4</div>
+    <div class="section-info"><div class="section-title">O que o Squad Creator gera por dentro</div><div class="section-sub">Entenda a estrutura de arquivos que é criada</div></div>
+    <div class="section-arrow">▼</div>
+  </div>
+  <div class="section-body"><div class="section-inner">
+
+    <p style="font-size:.84rem;color:var(--fg-secondary);margin-bottom:.5rem">Quando o squad é criado, ele gera uma estrutura completa. Não é um simples texto — é uma arquitetura robusta:</p>
+
+    <div class="sq">
+<span class="f">squads/squad-nome/</span>
+├── <span class="fi">config.yaml</span>               <span class="ds"># Configuração geral do squad</span>
+├── <span class="f">agents/</span>                    <span class="ds"># Definições detalhadas de cada agente</span>
+│   ├── <span class="fi">agente-lider.md</span>        <span class="ds"># Instruções, personalidade, skills</span>
+│   ├── <span class="fi">agente-2.md</span>
+│   ├── <span class="fi">agente-3.md</span>
+│   └── <span class="fi">...</span>
+├── <span class="f">tasks/</span>                     <span class="ds"># Tarefas de cada agente (input/output)</span>
+│   ├── <span class="fi">task-briefing.md</span>
+│   ├── <span class="fi">task-execucao.md</span>
+│   └── <span class="fi">...</span>
+├── <span class="f">templates/</span>                 <span class="ds"># Modelos reutilizáveis</span>
+├── <span class="f">checklists/</span>                <span class="ds"># Listas de verificação</span>
+└── <span class="f">data/</span>                      <span class="ds"># Dados de referência do domínio</span>
+    </div>
+
+    <div class="ib note"><strong>Importante:</strong> Os arquivos do squad ficam na pasta <code>squads/</code> e <strong>não interferem</strong> no código do seu app. Se você sincronizar de volta com o Lovable, ele simplesmente ignora esses arquivos.</div>
+  </div></div>
+</div>
+
+<!-- ═══ SQ-5: USANDO O SQUAD ═══ -->
+<div class="section" data-section>
+  <div class="section-head" onclick="toggleSection(this)">
+    <div class="section-num">5</div>
+    <div class="section-info"><div class="section-title">Usando o Squad Criado</div><div class="section-sub">Como acionar os agentes e pedir coisas</div></div>
+    <div class="section-arrow">▼</div>
+  </div>
+  <div class="section-body"><div class="section-inner">
+
+    <p style="font-size:.84rem;color:var(--fg-secondary);margin-bottom:.5rem">Depois que o squad foi criado, você usa os agentes como qualquer outro do AIOS — com <code>@nome-do-agente</code>:</p>
+
+    <div class="cb"><div class="ch"><span class="lt">Exemplos de uso</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="c"># Chamar o agente líder do squad (ex: creative-director)</span>
+<span class="cpk">@creative-director</span> <span class="co">Crie um briefing para uma landing page de curso de IA</span>
+
+<span class="c"># Chamar um agente específico</span>
+<span class="cpk">@copywriter</span> <span class="co">Escreva as copies para a seção hero e CTA</span>
+
+<span class="c"># Pedir que o squad inteiro trabalhe junto</span>
+<span class="co">Usando o squad web-design, crie uma landing page completa
+para vender consultoria de IA para empresários.
+Estilo: corporativo confiável. Seções: hero, benefícios,
+depoimentos, FAQ, formulário de contato.</span></pre></div>
+
+    <div class="ib purple"><strong><span class="ib-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span> Como o Squad funciona por dentro:</strong><br>
+    O AIOS orquestra automaticamente. O agente líder recebe seu pedido, cria o briefing e depois vai acionando cada agente na ordem certa. Você pode acompanhar em tempo real quais tasks estão sendo executadas — quando ficam laranja/verde, foram concluídas.</div>
+
+    <div class="ib warn"><strong>Dicas importantes:</strong><br>
+    • O squad pode pedir confirmações durante a execução — aceite com <code>y</code> (yes) ou <code>s</code> (sim)<br>
+    • Se precisa sair, pode voltar depois — o estado é salvo<br>
+    • Para trabalho autônomo prolongado, use o modo <code>yolo</code> (aceita tudo sem perguntar)<br>
+    • Para mudar de modelo (economizar tokens), use <code>/model</code> no Claude Code</div>
+  </div></div>
+</div>
+
+<!-- ═══ SQ-6: EXEMPLOS REAIS ═══ -->
+<div class="section" data-section>
+  <div class="section-head" onclick="toggleSection(this)">
+    <div class="section-num">6</div>
+    <div class="section-info"><div class="section-title">10 Exemplos de Squads para Copiar e Adaptar</div><div class="section-sub">Prompts prontos para as áreas mais procuradas</div></div>
+    <div class="section-arrow">▼</div>
+  </div>
+  <div class="section-body"><div class="section-inner">
+
+    <p style="font-size:.84rem;color:var(--fg-secondary);margin-bottom:.8rem">Abaixo estão exemplos de prompts que você pode colar diretamente na etapa de descrição (Passo 5). Adapte para o seu caso.</p>
+
+    <!-- EXEMPLO 1: JURÍDICO -->
+    <div class="squad-scenario">
+      <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> <span>Squad Jurídico</span></h4>
+      <p>Quero um squad para escritório de advocacia focado em direito do consumidor e previdenciário. Preciso de agentes especializados em pesquisa de jurisprudência, redação de petições, análise de viabilidade de teses, compliance com OAB e gestão de processos. O workflow principal é: análise do caso → pesquisa → redação → revisão → protocolo.</p>
+      <div class="squad-agents"><span class="sa">advogado-senior</span><span class="sa">pesquisador-juridico</span><span class="sa">redator-peticoes</span><span class="sa">compliance</span><span class="sa">gestor-processos</span></div>
+    </div>
+
+    <!-- EXEMPLO 2: SAÚDE -->
+    <div class="squad-scenario">
+      <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <span>Squad Saúde</span></h4>
+      <p>Quero um squad para gestão de clínica médica. Agentes para triagem de pacientes, elaboração de prontuários, análise de exames, protocolos clínicos, agendamento inteligente e atendimento ao paciente. Público: médicos e enfermeiros de clínica multiprofissional.</p>
+      <div class="squad-agents"><span class="sa">triagem</span><span class="sa">prontuarios</span><span class="sa">analista-exames</span><span class="sa">protocolos</span><span class="sa">agendamento</span></div>
+    </div>
+
+    <!-- EXEMPLO 3: MARKETING -->
+    <div class="squad-scenario">
+      <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> <span>Squad Marketing Digital</span></h4>
+      <p>Quero um squad de marketing digital completo. Agentes para estratégia, copywriting, criação de conteúdo para redes sociais, SEO, email marketing, análise de métricas e gestão de tráfego pago. Foco em funil de vendas e conversão.</p>
+      <div class="squad-agents"><span class="sa">estrategista</span><span class="sa">copywriter</span><span class="sa">social-media</span><span class="sa">seo-specialist</span><span class="sa">email-marketing</span><span class="sa">trafego-pago</span></div>
+    </div>
+
+    <!-- EXEMPLO 4: EDUCAÇÃO -->
+    <div class="squad-scenario">
+      <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 10 3 12 0v-5"/></svg> <span>Squad Educação</span></h4>
+      <p>Quero um squad para criar cursos online. Agentes: designer instrucional, roteirista de aulas, criador de exercícios e avaliações, especialista em gamificação, editor de material didático. Workflow: planejamento → roteiro → conteúdo → exercícios → revisão.</p>
+      <div class="squad-agents"><span class="sa">designer-instrucional</span><span class="sa">roteirista</span><span class="sa">criador-exercicios</span><span class="sa">gamificacao</span><span class="sa">editor</span></div>
+    </div>
+
+    <!-- EXEMPLO 5: FINANCEIRO -->
+    <div class="squad-scenario">
+      <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> <span>Squad Financeiro</span></h4>
+      <p>Quero um squad de análise financeira para PMEs. Agentes: analista contábil, planejador financeiro, especialista tributário, controller e gerador de relatórios. Foco em fluxo de caixa, DRE, projeções e compliance fiscal.</p>
+      <div class="squad-agents"><span class="sa">analista-contabil</span><span class="sa">planejador</span><span class="sa">tributario</span><span class="sa">controller</span><span class="sa">relatorios</span></div>
+    </div>
+
+    <!-- EXEMPLO 6: WEB DESIGN -->
+    <div class="squad-scenario">
+      <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg> <span>Squad Web Design</span></h4>
+      <p>Quero um squad para criar sites e landing pages profissionais que convertem. Agentes especializados em design, copywriting, SEO, storytelling, UX, front-end e análise de conversão (CRO). Público geral, qualquer nicho.</p>
+      <div class="squad-agents"><span class="sa">creative-director</span><span class="sa">web-designer</span><span class="sa">copywriter</span><span class="sa">seo</span><span class="sa">storytelling</span><span class="sa">frontend</span><span class="sa">cro-analyst</span></div>
+    </div>
+
+    <!-- EXEMPLO 7: LIVROS -->
+    <div class="squad-scenario">
+      <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> <span>Squad Criação de Livros</span></h4>
+      <p>Quero um squad para criar livros completos (ficção ou não-ficção). Agentes: planejador de conteúdo, pesquisador, escritor principal, editor, revisor gramatical, designer de capa e formatador. Entrega: PDF formatado pronto para publicação.</p>
+      <div class="squad-agents"><span class="sa">planejador</span><span class="sa">pesquisador</span><span class="sa">escritor</span><span class="sa">editor</span><span class="sa">revisor</span><span class="sa">designer-capa</span><span class="sa">formatador</span></div>
+    </div>
+
+    <!-- EXEMPLO 8: IMOBILIÁRIO -->
+    <div class="squad-scenario">
+      <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> <span>Squad Imobiliário</span></h4>
+      <p>Quero um squad para imobiliária digital. Agentes: captador de imóveis, analista de mercado, redator de anúncios, fotógrafo (descrição de fotos), gestor de leads, consultor de financiamento e pós-venda. Foco em conversão de leads.</p>
+      <div class="squad-agents"><span class="sa">captador</span><span class="sa">analista-mercado</span><span class="sa">redator</span><span class="sa">gestor-leads</span><span class="sa">financiamento</span><span class="sa">pos-venda</span></div>
+    </div>
+
+    <!-- EXEMPLO 9: ADMIN SISTEMAS -->
+    <div class="squad-scenario">
+      <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg> <span>Squad SysAdmin</span></h4>
+      <p>Quero um squad para administração de sistemas. Agentes: administrador Linux, especialista em segurança, monitoramento, backup, automação de deploys, gerente de incidentes e documentação técnica.</p>
+      <div class="squad-agents"><span class="sa">sysadmin</span><span class="sa">seguranca</span><span class="sa">monitoramento</span><span class="sa">backup</span><span class="sa">automacao</span><span class="sa">incidentes</span></div>
+    </div>
+
+    <!-- EXEMPLO 10: CONTEÚDO -->
+    <div class="squad-scenario">
+      <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg> <span>Squad Produção de Conteúdo</span></h4>
+      <p>Quero um squad para escalar produção de conteúdo para redes sociais. Agentes: estrategista de conteúdo, roteirista de vídeos curtos (Reels/TikTok), designer de carrosséis, copywriter de legendas, analista de métricas, gestor de calendário editorial. Foco em retenção e engajamento.</p>
+      <div class="squad-agents"><span class="sa">estrategista</span><span class="sa">roteirista-video</span><span class="sa">designer-carrossel</span><span class="sa">copywriter</span><span class="sa">analista-metricas</span><span class="sa">calendario</span></div>
+    </div>
+
+  </div></div>
+</div>
+
+<!-- ═══ SQ-7: DICAS AVANÇADAS ═══ -->
+<div class="section" data-section>
+  <div class="section-head" onclick="toggleSection(this)">
+    <div class="section-num">7</div>
+    <div class="section-info"><div class="section-title">Dicas e Macetes Avançados</div><div class="section-sub">Truques para squads de alto nível</div></div>
+    <div class="section-arrow">▼</div>
+  </div>
+  <div class="section-body"><div class="section-inner">
+
+    <div class="dev-phase">
+      <h3>1. Squad que cria Squads</h3>
+      <p>Você pode criar um squad cujo único objetivo é <strong>projetar outros squads melhores</strong>. Esse "meta-squad" analisa suas necessidades e sugere a melhor composição de equipe antes de criar o squad final.</p>
+      <div class="cb"><div class="ch"><span class="lt">Ideia de prompt</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="co">Quero um squad chamado "nirvana-creator" cujo objetivo é
+analisar qualquer ideia de projeto e projetar o melhor
+squad possível para executá-lo. Agentes: analista de
+requisitos, arquiteto de squads, especialista em agentes,
+e revisor de qualidade de squads.</span></pre></div>
+    </div>
+
+    <div class="dev-phase">
+      <h3>2. Use o CLAUDE.md para regras globais</h3>
+      <p>O arquivo <code>CLAUDE.md</code> (criado automaticamente pelo Claude Code) funciona como "leis" que todos os agentes seguem. Coloque ali regras como: "sempre escreva em português", "use acentuação correta", "siga o estilo da marca X".</p>
+    </div>
+
+    <div class="dev-phase">
+      <h3>3. Gerencie tokens com inteligência</h3>
+      <p>Use <code>/model</code> para trocar de modelo. Para planejamento, Haiku é suficiente. Para execução complexa, use Opus. Para o meio-termo, Sonnet.</p>
+      <div class="cb"><div class="ch"><span class="lt">Trocar modelo</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cpk">/model</span>
+<span class="c"># Selecione: haiku (barato) | sonnet (médio) | opus (melhor)</span></pre></div>
+    </div>
+
+    <div class="dev-phase">
+      <h3>4. Arraste arquivos para o terminal</h3>
+      <p>Você pode arrastar imagens, PDFs ou qualquer arquivo diretamente para a janela do Claude Code. O agente vai entender o conteúdo e usar como referência para o que está construindo.</p>
+    </div>
+
+    <div class="dev-phase">
+      <h3>5. Atualize squads sem perder customizações</h3>
+      <p>Se precisar reinstalar o AIOS, seus squads na pasta <code>squads/</code> são preservados. O comando de atualização é não-destrutivo.</p>
+      <div class="cb"><div class="ch"><span class="lt">Atualizar AIOS</span><button class="cp" onclick="cc(this)">Copiar</button></div><pre><span class="cg">npx</span> <span class="co">aios-core@latest</span> install</pre></div>
+    </div>
+
+  </div></div>
+</div>
+
+<!-- ═══ SQ-CHEATSHEET ═══ -->
+<div class="section" data-section>
+  <div class="section-head" onclick="toggleSection(this)">
+    <div class="section-num">★</div>
+    <div class="section-info"><div class="section-title">Cheatsheet — Squads em 60 Segundos</div><div class="section-sub">Cola rápida para criar e usar squads</div></div>
+    <div class="section-arrow">▼</div>
+  </div>
+  <div class="section-body"><div class="section-inner">
+    <div class="cb"><div class="ch"><span class="lt">Todos os Comandos de Squad</span><button class="cp" onclick="cc(this)">Copiar Tudo</button></div><pre><span class="c"># ─── CRIAR SQUAD ───</span>
+
+<span class="c"># Opção 1: Squad só neste projeto</span>
+<span class="cpk">/squad-creator-project</span>
+<span class="cpk">*design-squad</span>
+
+<span class="c"># Opção 2: Squad global (qualquer projeto)</span>
+<span class="cpk">/squad-creator-user</span>
+<span class="cpk">*design-squad</span>
+
+<span class="c"># ─── USAR SQUAD ───</span>
+
+<span class="c"># Chamar agente específico</span>
+<span class="cpk">@nome-do-agente</span> <span class="co">seu pedido aqui</span>
+
+<span class="c"># Listar squads disponíveis</span>
+<span class="cpk">*list-squads</span>
+
+<span class="c"># Validar estrutura do squad</span>
+<span class="cpk">*validate-squad</span> <span class="co">nome-do-squad</span>
+
+<span class="c"># Baixar squad pronto do repositório oficial</span>
+<span class="cpk">*download-squad</span> <span class="co">nome-do-squad</span>
+
+<span class="c"># ─── DICAS ───</span>
+
+<span class="c"># Trocar modelo (economizar tokens)</span>
+<span class="cpk">/model</span>
+
+<span class="c"># Modo autônomo (aceita tudo sem perguntar)</span>
+<span class="c"># Use com cuidado!</span>
+<span class="co">yolo</span>
+
+<span class="c"># Ver ajuda geral</span>
+<span class="cpk">*help</span></pre></div>
+  </div></div>
+</div>
+
+</div></div>
+
+<!-- ============================================================ -->
+<!-- PANEL 4: VOCABULÁRIO                                          -->
 <!-- ============================================================ -->
 <div class="main-panel" id="panel-vocab">
 <div class="mx" style="padding-top:1.5rem">
 
-<h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:.3rem">📖 Vocabulário de Programação para Leigos</h2>
-<p style="color:var(--td);font-size:.86rem;margin-bottom:1.2rem">Clique em cada termo para ver a definição, analogia e como pedir ao Claude Code. Baseado no <em>Manual de Vocabulário para Programação</em>.</p>
+<h2 style="font-family:var(--font-display);font-size:1.5rem;margin-bottom:.3rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Vocabulário de Programação para Leigos</h2>
+<p style="color:var(--fg-secondary);font-size:.86rem;margin-bottom:1.2rem">Clique em cada termo para ver a definição e analogia.</p>
 
-<div class="vocab-section">🧱 Fundamentos do Código</div>
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Código / Code</span><span class="vocab-pron">lê-se: "code"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">As instruções escritas que dizem ao computador o que fazer. É como uma receita de bolo: passo a passo, numa linguagem que a máquina entende.<div class="vocab-analogy">🍳 Se o programa é um prato pronto, o código é a receita que ensina como preparar.</div></div></div>
+<div class="vocab-section">Fundamentos do Código</div>
+<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Código / Code</span><span class="vocab-pron">"code"</span></div><span style="color:var(--fg-secondary)">▼</span></div><div class="vocab-body">As instruções escritas que dizem ao computador o que fazer.<div class="vocab-analogy">Se o programa é um prato pronto, o código é a receita.</div></div></div>
+<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Repositório (Repo)</span><span class="vocab-pron">"repo"</span></div><span style="color:var(--fg-secondary)">▼</span></div><div class="vocab-body">A pasta principal do projeto no GitHub. Guarda todo o código e histórico.<div class="vocab-analogy">O armário de documentos do projeto — tudo organizado com registro de quem mexeu.</div></div></div>
+<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Frontend e Backend</span><span class="vocab-pron">"front-end" e "bec-end"</span></div><span style="color:var(--fg-secondary)">▼</span></div><div class="vocab-body"><strong>Frontend</strong> = o que o usuário vê. <strong>Backend</strong> = o motor invisível.<div class="vocab-analogy">Frontend é o salão do restaurante. Backend é a cozinha.</div></div></div>
+<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">API</span><span class="vocab-pron">"ei-pi-ai"</span></div><span style="color:var(--fg-secondary)">▼</span></div><div class="vocab-body">Canal de comunicação entre sistemas.<div class="vocab-analogy">O garçom — leva seu pedido para a cozinha e traz o prato pronto.</div></div></div>
+<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Banco de Dados</span><span class="vocab-pron">"deita-beis"</span></div><span style="color:var(--fg-secondary)">▼</span></div><div class="vocab-body">Onde o programa guarda informações organizadas.<div class="vocab-analogy">O fichário do escritório — cada gaveta com informações por categoria.</div></div></div>
 
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Repositório (Repo)</span><span class="vocab-pron">lê-se: "repo"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">A pasta principal do projeto. Guarda todo o código, histórico de alterações e arquivos. Normalmente fica no GitHub.<div class="vocab-analogy">📁 É o armário de documentos do projeto — tudo fica ali organizado, com registro de quem mexeu no quê e quando.</div><div class="vocab-cmd">💬 "Crie um novo repositório para o meu projeto de loja online."</div></div></div>
+<div class="vocab-section">Versionamento (Git)</div>
+<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Commit</span><span class="vocab-pron">"comit"</span></div><span style="color:var(--fg-secondary)">▼</span></div><div class="vocab-body">Ponto de salvamento no código com mensagem.<div class="vocab-analogy">Ctrl+S com superpoderes — salva E cria registro na linha do tempo.</div></div></div>
+<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Branch</span><span class="vocab-pron">"brench"</span></div><span style="color:var(--fg-secondary)">▼</span></div><div class="vocab-body">Cópia paralela do código para trabalhar sem bagunçar a versão principal.<div class="vocab-analogy">Rascunho separado do documento oficial.</div></div></div>
+<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Pull Request (PR)</span><span class="vocab-pron">"pul ri-quest"</span></div><span style="color:var(--fg-secondary)">▼</span></div><div class="vocab-body">Pedido formal para juntar seu código à branch principal.<div class="vocab-analogy">Entregar relatório para o chefe revisar antes de publicar.</div></div></div>
+<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Push e Pull</span><span class="vocab-pron">"puch" e "pul"</span></div><span style="color:var(--fg-secondary)">▼</span></div><div class="vocab-body"><strong>Push</strong> = enviar para o GitHub. <strong>Pull</strong> = baixar do GitHub.<div class="vocab-analogy">Push = upload no Drive. Pull = download do Drive.</div></div></div>
 
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Frontend e Backend</span><span class="vocab-pron">lê-se: "front-end" e "bec-end"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body"><strong>Frontend</strong> é tudo que o usuário vê e clica — botões, cores, textos, layout. <strong>Backend</strong> é a parte invisível — o motor que processa dados e faz a lógica funcionar.<div class="vocab-analogy">🍽️ Frontend é o salão do restaurante (o que o cliente vê). Backend é a cozinha (onde tudo acontece por trás).</div><div class="vocab-cmd">💬 "Mude a cor do botão no frontend." / "Faça o backend salvar o e-mail do usuário."</div></div></div>
+<div class="vocab-section">Execução e Entrega</div>
+<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Deploy</span><span class="vocab-pron">"deploi"</span></div><span style="color:var(--fg-secondary)">▼</span></div><div class="vocab-body">Colocar o projeto no ar para o público.<div class="vocab-analogy">A inauguração da loja.</div></div></div>
+<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Build</span><span class="vocab-pron">"bild"</span></div><span style="color:var(--fg-secondary)">▼</span></div><div class="vocab-body">Transformar código-fonte em versão otimizada.<div class="vocab-analogy">Preparar a mala — pegar tudo, organizar e fechar.</div></div></div>
 
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">API</span><span class="vocab-pron">lê-se: "ei-pi-ai"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Um canal de comunicação entre sistemas. Permite que um programa converse com outro para trocar dados.<div class="vocab-analogy">🧑‍🍳 É o garçom do restaurante — leva seu pedido (requisição) para a cozinha (servidor) e traz o prato pronto (resposta).</div><div class="vocab-cmd">💬 "Integre com a API do WhatsApp para enviar mensagens automáticas."</div></div></div>
+<div class="vocab-section">Erros e Problemas</div>
+<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Bug</span><span class="vocab-pron">"bag"</span></div><span style="color:var(--fg-secondary)">▼</span></div><div class="vocab-body">Erro no código que causa comportamento inesperado.<div class="vocab-analogy">"10 kg de sal" em vez de "10 g" na receita.</div></div></div>
+<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Refatorar</span><span class="vocab-pron">"ri-fac-tor"</span></div><span style="color:var(--fg-secondary)">▼</span></div><div class="vocab-body">Reorganizar o código sem mudar o que faz.<div class="vocab-analogy">Reorganizar armário bagunçado — mesmas roupas, agora acha tudo rápido.</div></div></div>
 
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Banco de Dados (Database)</span><span class="vocab-pron">lê-se: "deita-beis"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Onde o programa guarda as informações de forma organizada: cadastros, produtos, pedidos. Exemplos: PostgreSQL, MySQL, MongoDB.<div class="vocab-analogy">🗄️ É o fichário do escritório — cada gaveta tem informações organizadas por categoria.</div><div class="vocab-cmd">💬 "Crie um banco de dados para armazenar os clientes com nome, email e telefone."</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Framework e Biblioteca</span><span class="vocab-pron">lê-se: "freim-uorc"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Ferramentas prontas que ajudam a programar mais rápido. <strong>Framework</strong> é uma estrutura completa (ex: Next.js). <strong>Biblioteca</strong> é uma ferramenta específica (ex: React).<div class="vocab-analogy">🏠 Framework é uma casa pré-fabricada. Biblioteca é uma ferramenta da caixa de ferramentas.</div></div></div>
-
-<div class="vocab-section">🔄 Versionamento (Git)</div>
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Commit</span><span class="vocab-pron">lê-se: "comit"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Um ponto de salvamento no código. Registra as mudanças com uma mensagem. Você pode voltar a qualquer commit anterior.<div class="vocab-analogy">💾 É como o Ctrl+S com superpoderes — salva E cria um registro na linha do tempo.</div><div class="vocab-cmd">💬 "Faça um commit com a mensagem: 'adiciona página de contato'."</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Branch</span><span class="vocab-pron">lê-se: "brench" (ramo)</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Uma cópia paralela do código onde você trabalha sem bagunçar a versão principal.<div class="vocab-analogy">📝 Imagine um rascunho separado do documento oficial. Você experimenta à vontade.</div><div class="vocab-cmd">💬 "Crie uma branch chamada 'nova-pagina-de-precos'."</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Merge</span><span class="vocab-pron">lê-se: "merdj" (juntar)</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Juntar o código de uma branch com outra. Quando termina, faz merge para a branch principal.<div class="vocab-analogy">📋 É colar o rascunho no documento oficial.</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Pull Request (PR)</span><span class="vocab-pron">lê-se: "pul ri-quest"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Um pedido formal para juntar seu código à branch principal. Como dizer: "terminei, revise e aprove".<div class="vocab-analogy">📄 É entregar um relatório para o chefe revisar antes de publicar.</div><div class="vocab-cmd">💬 "Abra um Pull Request desta branch para a main."</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Push e Pull</span><span class="vocab-pron">lê-se: "puch" e "pul"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body"><strong>Push</strong> = enviar suas alterações para o GitHub. <strong>Pull</strong> = baixar as alterações do GitHub para seu computador.<div class="vocab-analogy">☁️ Push é fazer upload no Google Drive. Pull é baixar a versão mais recente do Drive.</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Clone</span><span class="vocab-pron">lê-se: "clone"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Copiar um repositório inteiro do GitHub para o seu computador, incluindo todo o histórico.<div class="vocab-analogy">📂 É fazer uma cópia completa de um dossiê para trabalhar na sua mesa.</div></div></div>
-
-<div class="vocab-section">🚀 Execução e Entrega</div>
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Deploy</span><span class="vocab-pron">lê-se: "deploi" (publicar)</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Colocar o projeto no ar para que outras pessoas acessem pela internet.<div class="vocab-analogy">🏪 É a inauguração da loja — o público pode entrar.</div><div class="vocab-cmd">💬 "Me ajude a fazer o deploy deste projeto na Vercel."</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Build</span><span class="vocab-pron">lê-se: "bild" (construir)</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Transformar o código-fonte numa versão otimizada e pronta para funcionar.<div class="vocab-analogy">🧳 É preparar a mala para a viagem — pegar tudo, organizar e fechar.</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Ambientes: Local, Staging, Produção</span><span class="vocab-pron">lê-se: "stei-djing"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body"><strong>Local</strong> = seu computador. <strong>Staging</strong> = cópia de teste. <strong>Produção</strong> = ao vivo para os usuários.<div class="vocab-analogy">🎭 Local é a cozinha de casa. Staging é o ensaio geral. Produção é a noite de estreia.</div></div></div>
-
-<div class="vocab-section">📦 Estrutura do Projeto</div>
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Componente</span><span class="vocab-pron">lê-se: "com-po-nen-te"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Um pedaço reutilizável da interface (botão, menu, card). Monta a página como Lego.<div class="vocab-analogy">🧱 Cada peça de Lego é um componente. Você combina para montar o que quiser.</div><div class="vocab-cmd">💬 "Crie um componente de card de depoimento com foto, nome e texto."</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Rota (Route)</span><span class="vocab-pron">lê-se: "raut"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">O endereço/caminho de uma página. Ex: <code>/sobre</code> → Sobre Nós, <code>/contato</code> → Contato.<div class="vocab-analogy">🏷️ Cada rota é uma placa de endereço dentro do site.</div><div class="vocab-cmd">💬 "Crie uma rota /dashboard que mostra o painel do usuário."</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Variável de Ambiente (.env)</span><span class="vocab-pron">lê-se: "dot env"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Informações secretas (senhas, chaves de API) num arquivo separado que nunca é compartilhado.<div class="vocab-analogy">🔐 É o cofre do escritório — guarda senhas longe de olhos curiosos.</div><div class="vocab-cmd">💬 "Coloque a chave da API do Stripe como variável de ambiente."</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Dependência (Package)</span><span class="vocab-pron">lê-se: "pequedj"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Pacotes de código prontos que você instala para não reinventar a roda. Ficam em <code>package.json</code>.<div class="vocab-analogy">🛒 É comprar ingredientes semi-prontos em vez de plantar do zero.</div></div></div>
-
-<div class="vocab-section">🐛 Erros e Problemas</div>
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Bug</span><span class="vocab-pron">lê-se: "bag"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Um erro no código que faz o programa se comportar de forma inesperada.<div class="vocab-analogy">🧂 Um erro de digitação na receita — "10 kg de sal" em vez de "10 g".</div><div class="vocab-cmd">💬 "Tem um bug: quando clico em 'Comprar', nada acontece. Investigue e corrija."</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Debug</span><span class="vocab-pron">lê-se: "di-bag"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Investigar e corrigir bugs. Examinar pistas (logs, erros) para encontrar a causa.<div class="vocab-analogy">🔧 É o mecânico abrindo o capô para descobrir o barulho estranho.</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Log</span><span class="vocab-pron">lê-se: "log" (registro)</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Registro automático de tudo que acontece no programa. Consulte quando algo der errado.<div class="vocab-analogy">📒 É o livro de ocorrências do porteiro.</div><div class="vocab-cmd">💬 "Me mostre os logs de erro para entender por que o login não funciona."</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Erros HTTP (404, 500...)</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body"><strong>404</strong> = página não encontrada. <strong>500</strong> = erro interno do servidor. <strong>401/403</strong> = sem permissão.<div class="vocab-analogy">🏚️ 404 é chegar a um endereço e descobrir que o prédio não existe. 500 é o prédio existir mas ter um curto-circuito.</div></div></div>
-
-<div class="vocab-card" onclick="this.classList.toggle('open')"><div class="vocab-head"><div><span class="vocab-term">Refatorar (Refactor)</span><span class="vocab-pron">lê-se: "ri-fac-tor"</span></div><span style="color:var(--td)">▼</span></div><div class="vocab-body">Reorganizar o código sem mudar o que ele faz. Deixar mais limpo e fácil de entender.<div class="vocab-analogy">🗄️ Reorganizar um armário bagunçado — as roupas são as mesmas, mas agora acha tudo mais rápido.</div><div class="vocab-cmd">💬 "Refatore o código do login para ficar mais organizado."</div></div></div>
-
-<div class="ib tip" style="margin-top:1.5rem"><strong>🏆 Dica de Ouro:</strong> Você não precisa ser técnico. Descreva o que QUER que aconteça ("quando o usuário clicar aqui, quero que apareça uma mensagem de sucesso") e o Claude Code transforma em código.</div>
+<div class="ib tip" style="margin-top:1.5rem"><strong>Dica de Ouro:</strong> Você não precisa ser técnico. Descreva o que QUER que aconteça e o Claude Code transforma em código.</div>
 
 </div></div>
 
 <!-- ============================================================ -->
-<!-- PANEL 4: FAQ                                                  -->
+<!-- PANEL 5: FAQ                                                  -->
 <!-- ============================================================ -->
 <div class="main-panel" id="panel-faq">
 <div class="mx" style="padding-top:1.5rem">
 
-<h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:.5rem">❓ Perguntas Frequentes</h2>
-<p style="color:var(--td);font-size:.86rem;margin-bottom:1.2rem">Dúvidas comuns de quem está começando. Clique para expandir.</p>
+<h2 style="font-family:var(--font-display);font-size:1.5rem;margin-bottom:.5rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Perguntas Frequentes</h2>
 
-<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Preciso saber programar para usar tudo isso? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>Não!</strong> O Claude Code e os agentes AIOS entendem português natural. Basta descrever o que quer (ex: "crie um botão azul que salva o nome do cliente") e eles transformam em código. O vocabulário deste guia ajuda você a se comunicar melhor, mas não é obrigatório saber programar.</div></div>
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Preciso saber programar para usar tudo isso? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>Não!</strong> O Claude Code e os agentes AIOS entendem português natural. Basta descrever o que quer.</div></div>
 
-<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Qual a diferença entre Terminal e Claude Desktop? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>Terminal (CLI):</strong> Tela preta, digita comandos, mais controle. Precisa instalar Claude Code via <code>npm</code>. <strong>Desktop:</strong> App visual com aba "Code", clica em botões, vê diffs (diferenças) visualmente, sessões paralelas. Já vem no app. <strong>O motor é o mesmo</strong> — os agentes e comandos funcionam igual nas duas opções.</div></div>
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Qual a diferença entre Terminal e Claude Desktop? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>Terminal:</strong> Tela preta, mais controle. <strong>Desktop:</strong> App visual, vê diffs. O motor é o mesmo — os comandos funcionam igual.</div></div>
 
-<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Preciso pagar? Quanto custa? <span class="faq-arrow">▼</span></div><div class="faq-a">Você precisa de uma <strong>conta paga do Claude</strong>: Pro (~US$20/mês) ou Max (~US$100/mês). A Pro é suficiente para começar. <strong>NÃO precisa de API Key</strong> — basta fazer login com sua conta. Lovable e GitHub têm planos gratuitos.</div></div>
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Preciso pagar? Quanto custa? <span class="faq-arrow">▼</span></div><div class="faq-a">Conta paga do Claude: Pro (~US$20/mês) ou Max (~US$100/mês). NÃO precisa de API Key se tem Pro/Max.</div></div>
 
-<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Funciona no Mac/Linux? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>Sim!</strong> O guia foca no Windows/PowerShell, mas Node.js, Git e Claude Code funcionam em qualquer sistema. No Mac, use o Terminal em vez do PowerShell. Os comandos são praticamente idênticos. No Linux, instale via gerenciador de pacotes (<code>apt</code>, <code>brew</code>, etc.).</div></div>
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Funciona no Mac/Linux? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>Sim!</strong> No Mac use o Terminal. No Linux, instale via gerenciador de pacotes. Comandos quase idênticos.</div></div>
 
-<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">O que é "winget" que aparece nos comandos? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>winget</strong> é o gerenciador de pacotes do Windows — uma loja de apps que funciona por comando. Vem pré-instalado no Windows 11 e em versões atualizadas do Windows 10. Se não funcionar, instale as ferramentas pelo site (as opções estão nas abas do guia).</div></div>
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Preciso instalar o AIOS separadamente do God Mode? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>Não!</strong> O God Mode já instala o AIOS automaticamente.</div></div>
 
-<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Deu erro "command not found". O que faço? <span class="faq-arrow">▼</span></div><div class="faq-a">Isso significa que o programa não foi encontrado. Soluções: <strong>1)</strong> Feche e reabra o PowerShell após instalar qualquer coisa. <strong>2)</strong> Verifique se instalou corretamente (<code>node --version</code>, <code>git --version</code>). <strong>3)</strong> Se usou <code>winget</code>, reinicie o terminal. <strong>4)</strong> Tente instalar pelo site como alternativa.</div></div>
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">O Lovable vai "quebrar" se eu instalar AIOS pelo terminal? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>Não!</strong> O AIOS adiciona arquivos em <code>.aios-core</code> que não interferem no app. O Lovable ignora esses arquivos.</div></div>
 
-<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Posso usar AIOS sem o God Mode? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>Sim!</strong> O AIOS (<code>npx aios-core install</code>) instala o framework base com os agentes. O God Mode (<code>npx create-aios-god-mode</code>) adiciona 22 skills extras, 3 servidores MCP e 4 squads pré-prontos. Comece com o God Mode se quer tudo de uma vez, ou com o AIOS básico se quer ir devagar.</div></div>
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">O que é um Squad e qual a diferença dos agentes padrão? <span class="faq-arrow">▼</span></div><div class="faq-a">Os 10 agentes padrão (@dev, @qa, etc.) são focados em desenvolvimento de software. Squads são <strong>equipes customizadas</strong> que você cria para qualquer área: jurídico, saúde, marketing, educação, criação de livros... As possibilidades são ilimitadas.</div></div>
 
-<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">O Lovable vai "quebrar" se eu instalar AIOS pelo terminal? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>Não!</strong> O AIOS adiciona arquivos de configuração (na pasta <code>.aios-core</code>) que não interferem no código do seu app. O Lovable continua funcionando normalmente. Quando sincronizar de volta, o Lovable simplesmente ignora os arquivos que não reconhece.</div></div>
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Qual a diferença entre squad-creator-project e squad-creator-user? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>Project:</strong> O squad fica só naquele projeto. <strong>User:</strong> O squad fica global na sua máquina e aparece em qualquer projeto que você abrir.</div></div>
 
-<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">O que é "npm install" e por que preciso rodar toda hora? <span class="faq-arrow">▼</span></div><div class="faq-a"><code>npm install</code> baixa todas as bibliotecas (dependências) que o projeto precisa. É como ir ao supermercado comprar os ingredientes de uma receita. Você roda quando: clona o projeto pela primeira vez, puxa atualizações do Lovable/GitHub, ou quando alguém adiciona uma biblioteca nova.</div></div>
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Posso criar squads para áreas que não são de tecnologia? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>Sim!</strong> Squads funcionam para qualquer domínio: jurídico, saúde, finanças, educação, marketing, criação de livros, administração de sistemas, imobiliário... O AIOS trabalha com linguagem natural em qualquer área.</div></div>
 
-<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Posso ter Terminal e Desktop abertos ao mesmo tempo? <span class="faq-arrow">▼</span></div><div class="faq-a"><strong>Cuidado!</strong> Se ambos estiverem na mesma pasta, podem conflitar. O ideal é: use um OU outro por vez para o mesmo projeto. O Desktop com suas worktrees isola sessões automaticamente, mas se o Terminal também estiver editando, pode criar conflitos no Git.</div></div>
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Quanto tempo leva para criar um squad? <span class="faq-arrow">▼</span></div><div class="faq-a">O processo interativo (perguntas + ajustes) leva de 5 a 15 minutos. A geração dos arquivos pode levar mais alguns minutos. Squads mais complexos demoram mais, mas o resultado é proporcional — quanto mais tempo, mais robusto.</div></div>
 
-<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">O que fazer se der conflito no Git? <span class="faq-arrow">▼</span></div><div class="faq-a">Conflitos acontecem quando duas pessoas (ou o Lovable + você) editam o mesmo trecho de código. No Terminal, rode <code>claude "resolva os conflitos de merge"</code>. No Desktop, peça ao Claude para resolver. Ele mostra as diferenças e propõe a solução. Depois faça <code>git add .</code> e <code>git commit</code>.</div></div>
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">O squad consegue trabalhar sozinho enquanto eu durmo? <span class="faq-arrow">▼</span></div><div class="faq-a">Em grande parte, sim. Use o modo <code>yolo</code> para ele aceitar confirmações automaticamente. Porém, em ações críticas (como deletar arquivos), ele pode pedir confirmação manual.</div></div>
+
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Por que o resultado veio sem acentuação? <span class="faq-arrow">▼</span></div><div class="faq-a">Isso pode acontecer dependendo do modelo e configurações. A solução é adicionar no arquivo <code>CLAUDE.md</code> a regra: "Sempre escreva em português do Brasil com acentuação correta". Todos os agentes e squads seguem as regras desse arquivo.</div></div>
+
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Posso usar squads com outras IDEs além do Claude Code? <span class="faq-arrow">▼</span></div><div class="faq-a">Sim. Na instalação do AIOS, você pode escolher entre Claude Code, Cursor, Windsurf, Gemini CLI e outros. Os squads funcionam da mesma forma em qualquer IDE compatível.</div></div>
+
+<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">Como economizar tokens ao usar squads? <span class="faq-arrow">▼</span></div><div class="faq-a">Use <code>/model</code> para trocar de modelo. Para planejamento e briefing, use Haiku (mais barato). Para execução complexa, use Opus (melhor qualidade). Lembre-se: o custo é proporcional à qualidade.</div></div>
 
 </div></div>
 
-</main>
-
 <footer class="ft">
-  <p>Guia Definitivo v4.0 • Terminal & Desktop • Vocabulário • FAQ</p>
+  <p>Guia Definitivo v7.0 — <span class="gold">Super Inteligênc[IA]</span></p>
   <p style="margin-top:.2rem">Lovable + GitHub + Claude Code + AIOS + God Mode + Squads</p>
 </footer>
 
-<script>
-function cc(b){const p=b.closest('.cb').querySelector('pre');navigator.clipboard.writeText(p.innerText).then(()=>{b.textContent='✓ Copiado!';b.style.background='var(--g)';b.style.color='#fff';b.style.borderColor='var(--g)';setTimeout(()=>{b.textContent='Copiar';b.style.background='';b.style.color='';b.style.borderColor=''},2e3)})}
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function cc(b){const p=b.closest('.cb').querySelector('pre');navigator.clipboard.writeText(p.innerText).then(()=>{b.textContent='✓ Copiado!';b.style.background='var(--g)';b.style.color='#fff';b.style.borderColor='var(--g)';setTimeout(()=>{b.textContent=b.dataset.orig||'Copiar';b.style.background='';b.style.color='';b.style.borderColor=''},2e3)})}
 function sw(e,id){const t=e.target.closest('.tabs');const c=[];let s=t.nextElementSibling;while(s&&s.classList.contains('tc')){c.push(s);s=s.nextElementSibling}t.querySelectorAll('.tb').forEach(b=>b.classList.remove('a'));e.target.classList.add('a');c.forEach(x=>x.classList.remove('a'));document.getElementById(id)?.classList.add('a')}
 function toggleSection(h){h.closest('.section').classList.toggle('open')}
-function mainTab(e,id){document.querySelectorAll('.main-tab').forEach(t=>t.classList.remove('active'));e.target.classList.add('active');document.querySelectorAll('.main-panel').forEach(p=>p.classList.remove('active'));document.getElementById(id)?.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
-</script>
-</body>
-</html>
+function mainTab(e,id){document.querySelectorAll('.main-tab').forEach(t=>t.classList.remove('active'));e.target.class
